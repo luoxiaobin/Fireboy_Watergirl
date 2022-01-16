@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PlatformArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Platform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PlatformArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PlatformArray.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -73,5 +83,24 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Game.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="platformsArray" />
+        <watch expression="doors" language="JAVA" />
+        <watch expression="platforms" language="JAVA" />
+        <watch expression="greenGoos" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

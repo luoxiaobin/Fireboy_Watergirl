@@ -5,14 +5,9 @@ import java.awt.Rectangle;
 public class PlatformArray{ 
     private int rowNum; 
     private char[] line; 
-     
-    private int x; 
-    private int y; 
-    private int width; 
-    private int height; 
-    private Rectangle box; 
+
 //------------------------------------------------------------------------------     
-    void PlatformArray(int rowNum) { 
+    PlatformArray(int rowNum) {
          
         this.rowNum = rowNum; 
       
