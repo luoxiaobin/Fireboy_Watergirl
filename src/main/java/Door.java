@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color; 
 import java.awt.Rectangle; 
  
-public class Door extends Layout{ 
+public class Door {
     private int rowNum; 
     private char[] line; 
      
@@ -66,7 +66,7 @@ public class Door extends Layout{
     
     //------------------------------------------------------------------------------     
     public void draw(Graphics g){ 
-        g.setColor(Color.blue); 
+        g.setColor(Color.red);
         g.fillRect(this.x, this.y, this.width, this.height); 
     } 
 

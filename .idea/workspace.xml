@@ -4,18 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="">
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="ANOTHER COMMIT">
+      <change afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Box.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Box.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Door.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PlatformArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Layout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Layout.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rectangle_old.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rectangle_old.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Box.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Platform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PlatformArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PlatformArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PlatformArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Rectangle_old.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +35,13 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,11 +53,15 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="23l8xK6YUiCdwy7uiGqIYyOk9Wt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -71,6 +93,14 @@
       <option name="presentableId" value="Default" />
       <updated>1642297558750</updated>
     </task>
+    <task id="LOCAL-00001" summary="ANOTHER COMMIT">
+      <created>1642351023518</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1642351023518</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,22 +114,19 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="ANOTHER COMMIT" />
+    <option name="LAST_COMMIT_MESSAGE" value="ANOTHER COMMIT" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Game.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="platformsArray" />
         <watch expression="doors" language="JAVA" />
         <watch expression="platforms" language="JAVA" />
         <watch expression="greenGoos" language="JAVA" />
+        <watch expression="gameObjs" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

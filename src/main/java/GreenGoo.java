@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color; 
 import java.awt.Rectangle; 
  
-public class GreenGoo extends Layout{ 
+public class GreenGoo{
     private int rowNum; 
     private char[] line; 
      
