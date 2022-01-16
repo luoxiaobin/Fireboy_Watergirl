@@ -11,7 +11,9 @@ public class FinalProject{
         makePanel(); 
         Game game = new Game(); 
         game.setUp(); 
-        game.runGameLoop(); 
+        game.runGameLoop();
+
+        //this is a test
     } 
      
     public static void makePanel() { 
