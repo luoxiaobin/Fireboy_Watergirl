@@ -4,29 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="ANOTHER COMMIT">
-      <change afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameObject.java" afterDir="false" />
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Box.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Box.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Layout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Layout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformArray.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PlatformLayout.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Rectangle_old.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Rectangle_old.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Box.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PlatformArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Rectangle_old.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Const.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Door.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game$GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game$MyKeyListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
