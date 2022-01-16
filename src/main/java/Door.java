@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color; 
 import java.awt.Rectangle; 
  
-public class Platform extends Layout{ 
+public class Door extends Layout{ 
     private int rowNum; 
     private char[] line; 
      
@@ -12,7 +12,7 @@ public class Platform extends Layout{
     private int height; 
     private Rectangle box; 
 //------------------------------------------------------------------------------     
-    Platform(int x, int y, int width, int height) { 
+    Door(int x, int y, int width, int height) { 
          
         this.x = x; 
         this.y = y;

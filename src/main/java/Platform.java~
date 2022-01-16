@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color; 
 import java.awt.Rectangle; 
  
-public class Platform extends Layout{ 
+public class Platform{ 
     private int rowNum; 
     private char[] line; 
      
@@ -12,16 +12,16 @@ public class Platform extends Layout{
     private int height; 
     private Rectangle box; 
 //------------------------------------------------------------------------------     
-    Platform(int x, int y, int width, int height) { 
+    Platform(int x, int y, int w, int h) { 
          
         this.x = x; 
         this.y = y;
         this.width = width;
         this.height = height;
-        this.box = new Rectangle(x, y, width, height);
     } 
 
     void Platform(int rowNum) { 
+         
         this.rowNum = rowNum; 
       
     } 
