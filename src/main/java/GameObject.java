@@ -1,44 +1,55 @@
-import java.util.Objects;
+import java.awt.*;
 
-public final class GameObject {
+public class GameObject {
     private final String ObjectType;
     private final int x;
     private final int y;
     private final int width;
     private final int height;
+    private final Rectangle box;
 
-    public GameObject(String ObjectType,
-                      int x,
-                      int y,
-                      int width,
-                      int height) {
+    public GameObject (String ObjectType ,
+                       int x ,
+                       int y ,
+                       int width,
+                       int height) {
         this.ObjectType = ObjectType;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.box = new Rectangle ( x , y , width , height );
     }
 
     public String ObjectType() {
         return ObjectType;
     }
 
-    public int x() {
+    public int getX ( ) {
         return x;
     }
 
-    public int y() {
+    public int getY ( ) {
         return y;
     }
 
-    public int width() {
+    public int width ( ) {
         return width;
     }
 
-    public int height() {
+    public int height ( ) {
         return height;
     }
 
+    public Rectangle getBox ( ) {
+        return this.box;
+    }
+
+    //------------------------------------------------------------------------------
+    public void draw (Graphics g) {
+        g.fillRect ( this.x , this.y , this.width , this.height );
+    }
+/*
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -66,5 +77,5 @@ public final class GameObject {
                 "height=" + height + ']';
     }
 
-
+*/
 }

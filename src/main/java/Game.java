@@ -1,10 +1,10 @@
-
 import javax.swing.*;
-import java.awt.*; 
-import java.awt.event.*;
-
-import java.util.*;
-import java.io.File; 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 
@@ -14,7 +14,7 @@ public class Game{
     MyKeyListener keyListener;  
     //game objects 
     Jumper jumper; 
-    Platform[] platforms;
+    GameObject[] platforms;
     GreenGoo[] greenGoos;
     Door[] doors;
     GameObject[] gameObjs;
@@ -37,7 +37,7 @@ public class Game{
         gamePanel = new GamePanel(); 
         keyListener = new MyKeyListener();
         //platformsArray = new PlatformArray[MAX_ROW_LENGTH];
-        platforms =new Platform[MAX_ROW_LENGTH];
+        platforms =new GameObject[MAX_ROW_LENGTH];
         greenGoos =new GreenGoo[MAX_ROW_LENGTH];
         doors =new Door[MAX_ROW_LENGTH];
         gameObjs = new GameObject[MAX_ROW_LENGTH];
@@ -61,33 +61,29 @@ public class Game{
         gameFrame.setVisible(true);     
     }
 
-    private java.util.List<String> getRecordFromLine(String line) {
-        java.util.List<String> values = new ArrayList<String>();
-        try (Scanner rowScanner = new Scanner(line)) {
-            rowScanner.useDelimiter(COMMA_DELIMITER);
-            while (rowScanner.hasNext()) {
-                values.add(rowScanner.next());
-            }
-        }
-        return values;
-    }
-
-
     public void SetupGameObjects() {
         try {
-            java.util.List<java.util.List<String>> records = new ArrayList<>();
+            java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
 
             System.out.println(System.getProperty("user.dir"));
             Scanner scanner = new Scanner(new File(".//PlatformLayout.cfg"));
             while (scanner.hasNextLine()) {
-                records.add(getRecordFromLine(scanner.nextLine()));
+                String gameObjectRecordString = scanner.nextLine();
+
+                java.util.List<String> gameObjectRecordValues = new ArrayList<>();
+                Scanner rowScanner = new Scanner(gameObjectRecordString);
+                rowScanner.useDelimiter(COMMA_DELIMITER);
+                while (rowScanner.hasNext()) {
+                    gameObjectRecordValues.add(rowScanner.next());
+                }
+                gameObjectRecords.add ( gameObjectRecordValues );
             }
 
             int platformRowID=0;
             int greenGoosRowID=0;
             int doorsRowID=0;
-            for (int row = 0; row < records.size(); row++) {
-                java.util.List<String> record = records.get(row);
+            for (int row = 0; row < gameObjectRecords.size(); row++) {
+                java.util.List<String> record = gameObjectRecords.get(row);
 
                 gameObjs[row] = new GameObject (record.get(0).toUpperCase(),
                                                         Integer.parseInt(record.get(1).trim()),
@@ -96,15 +92,15 @@ public class Game{
                                                         Integer.parseInt(record.get(4).trim()));
                 switch (gameObjs[row].ObjectType()){
                     case "P":
-                        platforms[platformRowID++] = new Platform(gameObjs[row].x(),gameObjs[row].y(),gameObjs[row].width(),gameObjs[row].height());
+                        platforms[platformRowID++] = new Platform ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
                         break;
 
                     case "G":
-                        greenGoos[greenGoosRowID++] = new GreenGoo(gameObjs[row].x(),gameObjs[row].y(),gameObjs[row].width(),gameObjs[row].height());
+                        greenGoos[greenGoosRowID++] = new GreenGoo ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
                         break;
 
                     case "D":
-                        doors[doorsRowID++] = new Door(gameObjs[row].x(),gameObjs[row].y(),gameObjs[row].width(),gameObjs[row].height());
+                        doors[doorsRowID++] = new Door ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
                         break;
 
                 }
@@ -124,27 +120,56 @@ public class Game{
 
 //------------------------------------------------------------------------------   
 //    main game loop 
-    public void runGameLoop(){ 
-        while (true) { 
+    public void runGameLoop(){
+        String gameStatus = "playing";
+
+        //while (true) {
+        while (gameStatus.equals ( "playing" )) {
             gameFrame.repaint(); 
-            try  {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){} 
- 
-            jumper.accellerate(); 
-            jumper.moveX(); 
+            try  {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
+
+            jumper.accelerate ( );
+            jumper.moveX ( );
             jumper.moveY(Const.GROUND); 
             //if the object is moving down and collides with the platform
             //for (int i=0; i<MAX_ROW_LENGTH; i++){
             for (int i=0; i<platformCount; i++){
-                if (jumper.getVy()>0 && jumper.collides(platforms[i])){
-                    jumper.setY(platforms[i].getY() - jumper.getHeight());
-                    jumper.setVy(0);
+                if (jumper.getVy ( ) > 0 && jumper.collides ( platforms[i] )) {
+                    jumper.setY ( platforms[i].getY ( ) - jumper.getHeight ( ) );
+                    jumper.setVy ( 0 );
                 }
                 //if the object is moving up and collides with the platform
-                else if (jumper.getVy()<0 && jumper.collides(platforms[i])){
-                    jumper.setY(platforms[i].getY() + platforms[i].getHeight());
-                    jumper.setVy(0);
+                else if (jumper.getVy ( ) < 0 && jumper.collides ( platforms[i] )) {
+                    jumper.setY ( platforms[i].getY ( ) + platforms[i].height ( ) );
+                    jumper.setVy ( 0 );
                 }
+            }
 
+            //if the object collides with the door
+            for (int i=0; i<doorCount; i++){
+                if (jumper.collides ( doors[i] )) {
+                    gameStatus = "Won";
+                    jumper.setVx ( 0 );
+                    jumper.setVy ( 0 );
+                    System.out.println ( "You WIN!!!" );
+                }
+            }
+
+            //if the object collides with any of the GreenGoo
+            for (int i=0; i<greenGooCount; i++){
+                if (jumper.collides ( greenGoos[i] )) {
+                    gameStatus = "Lost";
+                    jumper.setVx ( 0 );
+                    jumper.setVy ( 0 );
+                    System.out.println ( "You LOST!!!" );
+                }
+            }
+
+            //if jumper hits left edge of the screen, it should bounce back
+            if (jumper.getX ( ) <= 0) {
+                jumper.setVx ( Math.abs ( jumper.getVx ( ) ) );
+            } else if (jumper.getX ( ) >= Const.WIDTH) {
+                jumper.setVx ( - 1 * Math.abs ( jumper.getVx ( ) ) );
             }
         }
     }   
@@ -157,9 +182,11 @@ public class Game{
                 jumper.setVx(-Const.RUN_SPEED); 
             } else if (key == KeyEvent.VK_RIGHT){ 
                 jumper.setVx(Const.RUN_SPEED); 
-            } else if (key == KeyEvent.VK_UP && jumper.isOnLevel(Const.GROUND)){ 
-                jumper.setVy(Const.JUMP_SPEED); 
-            } else{ 
+            //} else if (key == KeyEvent.VK_UP && jumper.isOnLevel(Const.GROUND)){
+            //    jumper.setVy(Const.JUMP_SPEED);
+            } else if (key == KeyEvent.VK_UP){
+                    jumper.setVy(Const.JUMP_SPEED);
+            } else{
                 jumper.setVx(0); //stop if any other key is pressed 
             }              
         } 
@@ -180,13 +207,7 @@ public class Game{
         public void paintComponent(Graphics g){  
             super.paintComponent(g); //required 
             jumper.draw(g); 
-            /*int numRows = layout.length;
-            int numColumns = layout[0].length;
-            for (int row=0; row<layout.length; row++) { //drawing each row in platforms (an array of platforms)
-                for (int column=0; column<numColumns; column++) {
-                    layout[row][column].draw(g);
-                }
-            }*/
+
             for (int i=0; i<MAX_ROW_LENGTH; i++){
                 if (platforms[i] != null) {
                     platforms[i].draw(g);
@@ -199,11 +220,8 @@ public class Game{
                 if (doors[i] != null) {
                     doors[i].draw(g);
                 }
-                //greenGoos[i].draw(g);
-                //doors[i].draw(g);
             }
 
-
-        }     
+        }
     }     
 }

@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="">
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="removed unnecessary files etc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Const.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Door.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game$GamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game$MyKeyListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlatformLayout.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Platform.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +61,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunManager">
     <configuration name="FinalProject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -88,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642351023518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="removed unnecessary files etc">
+      <created>1642376788376</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642376788376</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,12 +117,13 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="ANOTHER COMMIT" />
-    <option name="LAST_COMMIT_MESSAGE" value="ANOTHER COMMIT" />
+    <MESSAGE value="removed unnecessary files etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary files etc" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="Application">
-        <watch expression="platformsArray" />
+        <watch expression="platformCount" language="JAVA" />
         <watch expression="doors" language="JAVA" />
         <watch expression="platforms" language="JAVA" />
         <watch expression="greenGoos" language="JAVA" />
