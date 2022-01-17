@@ -3,8 +3,9 @@ import java.awt.*;
 public class Platform extends GameObject {
 
     //------------------------------------------------------------------------------
-    Platform (int x , int y , int width , int height) {
-        super ( "P" , x , y , width , height );
+    Platform (int x , int y ) {
+        //super ( "P" , x , y , width , height );
+        super ( "G" , x , y , ".//images//platform.png");
     }
 
     public void draw (Graphics g) {

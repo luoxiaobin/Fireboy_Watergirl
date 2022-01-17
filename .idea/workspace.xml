@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="removed unnecessary files etc">
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes">
+      <change afterPath="$PROJECT_DIR$/images/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/fireboy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/fireboy_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/platform.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/watergirl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/watergirl_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Background.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlatformLayout.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlatformLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Door.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
@@ -14,6 +22,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
@@ -24,6 +33,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="module" />
+    </option>
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -37,6 +51,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,6 +84,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="FinalProject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -100,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642376788376</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes">
+      <created>1642386476957</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1642386476957</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,7 +152,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="ANOTHER COMMIT" />
     <MESSAGE value="removed unnecessary files etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary files etc" />
+    <MESSAGE value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -130,5 +165,8 @@
         <watch expression="gameObjs" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FinalProject$FinalProject.ic" NAME="FinalProject Coverage Results" MODIFIED="1642388929652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

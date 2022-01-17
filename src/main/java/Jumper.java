@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
- 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class Jumper {
     private final int width;
     private final int height;
@@ -8,17 +12,27 @@ public class Jumper {
     private int y;
     private int Vx;
     private int Vy;
+    private BufferedImage picture;
 
     //------------------------------------------------------------------------------
-    Jumper (int x , int y , int width , int height) {
+    Jumper (int x , int y , String picName) {
         //super ("J", x, y, width, height);
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
-        this.box = new Rectangle ( x , y , width , height );
+        //this.box = new Rectangle ( x , y , width , height );
         this.Vx = 0;
         this.Vy = 0;
+
+        try {
+            this.picture = ImageIO.read(new File (picName));
+        }
+        catch (IOException ex){};
+
+        this.width = this.picture.getWidth ();
+        this.height =  this.picture.getHeight ();
+        this.box = new Rectangle ( x , y , this.width , this.height );
+
+
     }
 
     //------------------------------------------------------------------------------
@@ -61,7 +75,8 @@ public class Jumper {
     //------------------------------------------------------------------------------
     public void draw (Graphics g) {
         g.setColor ( Color.red );
-        g.fillRect ( this.x , this.y , this.width , this.height );
+        //g.fillRect ( this.x , this.y , this.width , this.height );
+        g.drawImage(this.picture, this.x - this.width, this.y - this.height, null);
     }
 
     public void accelerate ( ) {

@@ -18,6 +18,7 @@ public class Game{
     GreenGoo[] greenGoos;
     Door[] doors;
     GameObject[] gameObjs;
+    Background background;
 
 
 
@@ -36,6 +37,10 @@ public class Game{
         gameFrame = new JFrame("Game Window"); 
         gamePanel = new GamePanel(); 
         keyListener = new MyKeyListener();
+
+        String bckgPic = "images/background.png";
+        background = new Background(bckgPic);
+
         //platformsArray = new PlatformArray[MAX_ROW_LENGTH];
         platforms =new GameObject[MAX_ROW_LENGTH];
         greenGoos =new GreenGoo[MAX_ROW_LENGTH];
@@ -43,10 +48,12 @@ public class Game{
         gameObjs = new GameObject[MAX_ROW_LENGTH];
 
         int jumperW = 20; 
-        int jumperH = 20; 
-        int jumperX = Const.WIDTH/2; 
-        int jumperY = Const.GROUND - jumperH; 
-        jumper = new Jumper(jumperX, jumperY, jumperW, jumperH); 
+        int jumperH = 32;
+        int jumperX = Const.WIDTH/2;
+        int jumperY = Const.GROUND - jumperH;
+        //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH);
+        //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH, ".//images//watergirl_small.png");
+        jumper = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
 
         SetupGameObjects();
     }
@@ -92,15 +99,15 @@ public class Game{
                                                         Integer.parseInt(record.get(4).trim()));
                 switch (gameObjs[row].ObjectType()){
                     case "P":
-                        platforms[platformRowID++] = new Platform ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
+                        platforms[platformRowID++] = new Platform ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
                         break;
 
                     case "G":
-                        greenGoos[greenGoosRowID++] = new GreenGoo ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
+                        greenGoos[greenGoosRowID++] = new GreenGoo ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
                         break;
 
                     case "D":
-                        doors[doorsRowID++] = new Door ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ) , gameObjs[row].width ( ) , gameObjs[row].height ( ) );
+                        doors[doorsRowID++] = new Door ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
                         break;
 
                 }
@@ -205,7 +212,8 @@ public class Game{
          
         @Override 
         public void paintComponent(Graphics g){  
-            super.paintComponent(g); //required 
+            super.paintComponent(g); //required
+            background.draw ( g );
             jumper.draw(g); 
 
             for (int i=0; i<MAX_ROW_LENGTH; i++){

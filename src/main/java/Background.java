@@ -1,16 +1,14 @@
 import java.awt.*;
 
-public class Door extends GameObject {
+public class Background extends GameObject {
 
     //------------------------------------------------------------------------------
-    Door (int x , int y) {
+    Background (String picName) {
         //super ( "G" , x , y , width , height );
-        super ( "G" , x , y , ".//images//fireboy_small.png");
+        super ( "B" , 0 , 0 , picName);
     }
 
-
     public void draw (Graphics g) {
-        g.setColor ( Color.white );
         super.draw ( g );
     }
 
