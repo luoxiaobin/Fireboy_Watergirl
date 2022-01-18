@@ -23,7 +23,7 @@ public class Game{
 
 
     final static int MAX_LINE_LENGTH = 120;
-    final static int MAX_ROW_LENGTH = 10;
+    final static int MAX_ROW_LENGTH = 500;
     final static String COMMA_DELIMITER = ",";
 
     int platformCount = 0;
@@ -49,8 +49,10 @@ public class Game{
 
         int jumperW = 20; 
         int jumperH = 32;
-        int jumperX = Const.WIDTH/2;
-        int jumperY = Const.GROUND - jumperH;
+//        int jumperX = Const.WIDTH/2;
+        int jumperX = 50;
+//        int jumperY = Const.GROUND - jumperH;
+        int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
         //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH);
         //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH, ".//images//watergirl_small.png");
         jumper = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
@@ -83,7 +85,7 @@ public class Game{
                 while (rowScanner.hasNext()) {
                     gameObjectRecordValues.add(rowScanner.next());
                 }
-                gameObjectRecords.add ( gameObjectRecordValues );
+                gameObjectRecords.add(gameObjectRecordValues);
             }
 
             int platformRowID=0;
@@ -94,20 +96,18 @@ public class Game{
 
                 gameObjs[row] = new GameObject (record.get(0).toUpperCase(),
                                                         Integer.parseInt(record.get(1).trim()),
-                                                        Integer.parseInt(record.get(2).trim()),
-                                                        Integer.parseInt(record.get(3).trim()),
-                                                        Integer.parseInt(record.get(4).trim()));
+                                                        Integer.parseInt(record.get(2).trim()));
                 switch (gameObjs[row].ObjectType()){
                     case "P":
-                        platforms[platformRowID++] = new Platform ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
+                        platforms[platformRowID++] = new Platform (gameObjs[row].getX(), gameObjs[row].getY());
                         break;
 
                     case "G":
-                        greenGoos[greenGoosRowID++] = new GreenGoo ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
+                        greenGoos[greenGoosRowID++] = new GreenGoo(gameObjs[row].getX(), gameObjs[row].getY());
                         break;
 
                     case "D":
-                        doors[doorsRowID++] = new Door ( gameObjs[row].getX ( ) , gameObjs[row].getY ( ));
+                        doors[doorsRowID++] = new Door(gameObjs[row].getX(), gameObjs[row].getY());
                         break;
 
                 }
@@ -131,52 +131,55 @@ public class Game{
         String gameStatus = "playing";
 
         //while (true) {
-        while (gameStatus.equals ( "playing" )) {
+        while (gameStatus.equals("playing")) {
             gameFrame.repaint(); 
-            try  {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
+            try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
 
-            jumper.accelerate ( );
-            jumper.moveX ( );
+            jumper.accelerate();
+            jumper.moveX();
             jumper.moveY(Const.GROUND); 
             //if the object is moving down and collides with the platform
             //for (int i=0; i<MAX_ROW_LENGTH; i++){
             for (int i=0; i<platformCount; i++){
-                if (jumper.getVy ( ) > 0 && jumper.collides ( platforms[i] )) {
-                    jumper.setY ( platforms[i].getY ( ) - jumper.getHeight ( ) );
-                    jumper.setVy ( 0 );
+                if (jumper.getVy()>0 && jumper.collides(platforms[i])) {
+                    jumper.setY(platforms[i].getY()-jumper.getHeight());
+                    jumper.setVy(0);
                 }
                 //if the object is moving up and collides with the platform
-                else if (jumper.getVy ( ) < 0 && jumper.collides ( platforms[i] )) {
-                    jumper.setY ( platforms[i].getY ( ) + platforms[i].height ( ) );
-                    jumper.setVy ( 0 );
+                else if (jumper.getVy()<0 && jumper.collides(platforms[i])) {
+                    jumper.setY(platforms[i].getY() + platforms[i].height());
+                    jumper.setVy(0);
                 }
             }
 
             //if the object collides with the door
             for (int i=0; i<doorCount; i++){
-                if (jumper.collides ( doors[i] )) {
+                if (jumper.collides (doors[i])) {
                     gameStatus = "Won";
-                    jumper.setVx ( 0 );
-                    jumper.setVy ( 0 );
-                    System.out.println ( "You WIN!!!" );
+                    jumper.setVx (0);
+                    jumper.setVy (0);
+                    System.out.println ("You WIN!!!");
                 }
             }
 
             //if the object collides with any of the GreenGoo
             for (int i=0; i<greenGooCount; i++){
-                if (jumper.collides ( greenGoos[i] )) {
+                if (jumper.collides (greenGoos[i])) {
                     gameStatus = "Lost";
-                    jumper.setVx ( 0 );
-                    jumper.setVy ( 0 );
-                    System.out.println ( "You LOST!!!" );
+                    jumper.setVx (0);
+                    jumper.setVy (0);
+                    System.out.println("You LOST!!!");
                 }
             }
 
             //if jumper hits left edge of the screen, it should bounce back
-            if (jumper.getX ( ) <= 0) {
-                jumper.setVx ( Math.abs ( jumper.getVx ( ) ) );
-            } else if (jumper.getX ( ) >= Const.WIDTH) {
-                jumper.setVx ( - 1 * Math.abs ( jumper.getVx ( ) ) );
+            if (jumper.getX()<=1) {
+                //jumper.setVx (Math.abs(jumper.getVx()));
+                jumper.setX(2*Math.abs(jumper.getX()));
+            }
+            else if (jumper.getX()>= Const.WIDTH) {
+                //jumper.setVx (-1*Math.abs(jumper.getVx()));
+                jumper.setX(2*Const.WIDTH-jumper.getX());
             }
         }
     }   
@@ -185,22 +188,33 @@ public class Game{
     public class MyKeyListener implements KeyListener{    
         public void keyPressed(KeyEvent e){ 
             int key = e.getKeyCode(); 
-            if (key == KeyEvent.VK_LEFT){ 
+            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
+                jumper.setVy(Const.JUMP_SPEED);
+                System.out.println("up is pressed");
+            }
+            if (key == KeyEvent.VK_LEFT) { 
                 jumper.setVx(-Const.RUN_SPEED);
+                System.out.println("left is pressed");
             }
-            else if (key == KeyEvent.VK_RIGHT){ 
+            if (key == KeyEvent.VK_RIGHT) { 
                 jumper.setVx(Const.RUN_SPEED); 
-            //} else if (key == KeyEvent.VK_UP && jumper.isOnLevel(Const.GROUND)){
-            //    jumper.setVy(Const.JUMP_SPEED);
+                System.out.println("right is pressed");
             } 
-            else if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
-                    jumper.setVy(Const.JUMP_SPEED);
-            }
-            else {
-                jumper.setVx(0); //stop if any other key is pressed 
-            }              
+//            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
+//                    jumper.setVy(Const.JUMP_SPEED);
+//            }
         } 
-        public void keyReleased(KeyEvent e){  
+        public void keyReleased(KeyEvent e){
+            int key = e.getKeyCode(); 
+            if (key != KeyEvent.VK_LEFT){ 
+                jumper.setVx(0);
+            }
+            if (key != KeyEvent.VK_RIGHT){ 
+                jumper.setVx(0); 
+            } 
+//            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
+//                    jumper.setVy(0);
+//            }
         }    
         public void keyTyped(KeyEvent e){ 
         }            

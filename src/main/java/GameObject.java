@@ -15,16 +15,14 @@ public class GameObject {
 
     public GameObject (String ObjectType ,
                        int x ,
-                       int y ,
-                       int width,
-                       int height
+                       int y
                        ) {
         this.ObjectType = ObjectType;
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
-        this.box = new Rectangle ( x , y , width , height );
+        this.width = 0;
+        this.height = 0;
+        this.box = new Rectangle (x, y, width , height );
     }
 
     public GameObject(String ObjectType ,
@@ -52,34 +50,35 @@ public class GameObject {
         return ObjectType;
     }
 
-    public int getX ( ) {
+    public int getX() {
         return x;
     }
 
-    public int getY ( ) {
+    public int getY() {
         return y;
     }
 
-    public int width ( ) {
+    public int width() {
         return width;
     }
 
-    public int height ( ) {
+    public int height() {
         return height;
     }
 
-    public Rectangle getBox ( ) {
+    public Rectangle getBox() {
         return this.box;
     }
 
     //------------------------------------------------------------------------------
     public void draw (Graphics g) {
         //g.fillRect ( this.x , this.y , this.width , this.height );
-        if (this.ObjectType.equals ( "B" )) {
-            g.drawImage ( this.picture , this.x , this.y , null );
+        if (this.ObjectType.equals("B")) {
+            g.drawImage ( this.picture, this.x, this.y, null);
         }
         else {
-            g.drawImage ( this.picture , this.x - this.width , this.y - this.height , null );
+            //g.drawImage(this.picture, this.x-this.width, this.y-this.height, null);
+            g.drawImage(this.picture, this.x, this.y, null);
         }
 
     }

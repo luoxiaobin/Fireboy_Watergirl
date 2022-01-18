@@ -59,7 +59,9 @@ public class Jumper {
     public Rectangle getBox ( ) {
         return this.box;
     }
-
+    public void setX (int x) {
+        this.x = x;
+    }
     public int getX ( ) {
         return this.x;
     }
@@ -76,20 +78,21 @@ public class Jumper {
     public void draw (Graphics g) {
         g.setColor ( Color.red );
         //g.fillRect ( this.x , this.y , this.width , this.height );
-        g.drawImage(this.picture, this.x - this.width, this.y - this.height, null);
+        g.drawImage(this.picture, this.x, this.y, null);
     }
 
     public void accelerate ( ) {
         this.Vy += Const.GRAVITY;
+        //System.out.println("hello");
     }
 
-    public void moveX ( ) {
+    public void moveX() {
         this.x += this.Vx;
-        this.setVx(0);
+//        this.setVx(0);
         this.setBox ( );
     }
 
-    public void moveY (int bottomLimit) {
+    public void moveY(int bottomLimit) {
         this.y += this.Vy;
         if (this.y + this.height >= bottomLimit) {
             this.y = bottomLimit - this.height;

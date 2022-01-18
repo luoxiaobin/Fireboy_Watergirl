@@ -4,14 +4,11 @@ public class Door extends GameObject {
 
     //------------------------------------------------------------------------------
     Door (int x , int y) {
-        //super ( "G" , x , y , width , height );
-        super ( "G" , x , y , ".//images//door.png");
+        super ("G", x, y, ".//images//door.png");
     }
-
 
     public void draw (Graphics g) {
-        g.setColor ( Color.white );
-        super.draw ( g );
+        g.setColor(Color.white);
+        super.draw(g);
     }
-
 }
