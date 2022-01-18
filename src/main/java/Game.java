@@ -186,14 +186,17 @@ public class Game{
         public void keyPressed(KeyEvent e){ 
             int key = e.getKeyCode(); 
             if (key == KeyEvent.VK_LEFT){ 
-                jumper.setVx(-Const.RUN_SPEED); 
-            } else if (key == KeyEvent.VK_RIGHT){ 
+                jumper.setVx(-Const.RUN_SPEED);
+            }
+            else if (key == KeyEvent.VK_RIGHT){ 
                 jumper.setVx(Const.RUN_SPEED); 
             //} else if (key == KeyEvent.VK_UP && jumper.isOnLevel(Const.GROUND)){
             //    jumper.setVy(Const.JUMP_SPEED);
-            } else if (key == KeyEvent.VK_UP){
+            } 
+            else if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
                     jumper.setVy(Const.JUMP_SPEED);
-            } else{
+            }
+            else {
                 jumper.setVx(0); //stop if any other key is pressed 
             }              
         } 

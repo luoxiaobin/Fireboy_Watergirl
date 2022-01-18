@@ -5,7 +5,7 @@ public class Door extends GameObject {
     //------------------------------------------------------------------------------
     Door (int x , int y) {
         //super ( "G" , x , y , width , height );
-        super ( "G" , x , y , ".//images//fireboy_small.png");
+        super ( "G" , x , y , ".//images//door.png");
     }
 
 
