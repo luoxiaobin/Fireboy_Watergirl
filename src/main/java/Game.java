@@ -17,13 +17,10 @@ public class Game{
     GameObject[] platforms;
     GreenGoo[] greenGoos;
     Door[] doors;
-    GameObject[] gameObjs;
+    //GameObject[] gameObjs;
     Background background;
 
-
-
-    final static int MAX_LINE_LENGTH = 120;
-    final static int MAX_ROW_LENGTH = 500;
+    final static int MAX_OBJ_NUM = 500;
     final static String COMMA_DELIMITER = ",";
 
     int platformCount = 0;
@@ -31,7 +28,6 @@ public class Game{
     int doorCount = 0;
 
 
-    
 //------------------------------------------------------------------------------ 
     Game(){ 
         gameFrame = new JFrame("Game Window"); 
@@ -41,11 +37,10 @@ public class Game{
         String bckgPic = "images/background.png";
         background = new Background(bckgPic);
 
-        //platformsArray = new PlatformArray[MAX_ROW_LENGTH];
-        platforms =new GameObject[MAX_ROW_LENGTH];
-        greenGoos =new GreenGoo[MAX_ROW_LENGTH];
-        doors =new Door[MAX_ROW_LENGTH];
-        gameObjs = new GameObject[MAX_ROW_LENGTH];
+        platforms =new GameObject[MAX_OBJ_NUM];
+        greenGoos =new GreenGoo[MAX_OBJ_NUM];
+        doors =new Door[MAX_OBJ_NUM];
+        //gameObjs = new GameObject[MAX_ROW_LENGTH];
 
         int jumperW = 20; 
         int jumperH = 32;
@@ -75,7 +70,7 @@ public class Game{
             java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
 
             System.out.println(System.getProperty("user.dir"));
-            Scanner scanner = new Scanner(new File(".//PlatformLayout.cfg"));
+            Scanner scanner = new Scanner(new File("./PlatformLayout.cfg"));
             while (scanner.hasNextLine()) {
                 String gameObjectRecordString = scanner.nextLine();
 
@@ -94,20 +89,24 @@ public class Game{
             for (int row = 0; row < gameObjectRecords.size(); row++) {
                 java.util.List<String> record = gameObjectRecords.get(row);
 
-                gameObjs[row] = new GameObject (record.get(0).toUpperCase(),
-                                                        Integer.parseInt(record.get(1).trim()),
-                                                        Integer.parseInt(record.get(2).trim()));
-                switch (gameObjs[row].ObjectType()){
+//                gameObjs[row] = new GameObject (record.get(0).toUpperCase(),  Integer.parseInt(record.get(1).trim()), Integer.parseInt(record.get(2).trim()));
+
+                String gameObjectType = record.get(0).toUpperCase();
+                int posX = Integer.parseInt(record.get(1).trim());
+                int posY = Integer.parseInt(record.get(2).trim());
+
+                switch (gameObjectType){
+                //switch (gameObjs[row].ObjectType()){
                     case "P":
-                        platforms[platformRowID++] = new Platform (gameObjs[row].getX(), gameObjs[row].getY());
+                        platforms[platformRowID++] = new Platform (posX, posY);
                         break;
 
                     case "G":
-                        greenGoos[greenGoosRowID++] = new GreenGoo(gameObjs[row].getX(), gameObjs[row].getY());
+                        greenGoos[greenGoosRowID++] = new GreenGoo(posX, posY);
                         break;
 
                     case "D":
-                        doors[doorsRowID++] = new Door(gameObjs[row].getX(), gameObjs[row].getY());
+                        doors[doorsRowID++] = new Door(posX, posY);
                         break;
 
                 }
@@ -233,7 +232,7 @@ public class Game{
             background.draw ( g );
             jumper.draw(g); 
 
-            for (int i=0; i<MAX_ROW_LENGTH; i++){
+            for (int i = 0; i< MAX_OBJ_NUM; i++){
                 if (platforms[i] != null) {
                     platforms[i].draw(g);
                 }
