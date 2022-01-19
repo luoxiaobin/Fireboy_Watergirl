@@ -14,18 +14,13 @@ public class Game{
     MyKeyListener keyListener;  
     //game objects 
     Jumper jumper; 
-    GameObject[] platforms;
-    GreenGoo[] greenGoos;
-    Door[] doors;
-    //GameObject[] gameObjs;
+    java.util.List<Platform> platformList;
+    java.util.List<GreenGoo> greenGooList;
+    java.util.List<Door> doorList;
+
     Background background;
 
-    final static int MAX_OBJ_NUM = 500;
-    final static String COMMA_DELIMITER = ",";
 
-    int platformCount = 0;
-    int greenGooCount = 0;
-    int doorCount = 0;
 
 
 //------------------------------------------------------------------------------ 
@@ -37,13 +32,14 @@ public class Game{
         String bckgPic = "images/background.png";
         background = new Background(bckgPic);
 
-        platforms =new GameObject[MAX_OBJ_NUM];
-        greenGoos =new GreenGoo[MAX_OBJ_NUM];
-        doors =new Door[MAX_OBJ_NUM];
+        platformList = new ArrayList<Platform>();
+        greenGooList = new ArrayList<GreenGoo>();
+        doorList = new ArrayList<Door>();
+
         //gameObjs = new GameObject[MAX_ROW_LENGTH];
 
-        int jumperW = 20; 
-        int jumperH = 32;
+//        int jumperW = 20;
+//        int jumperH = 32;
 //        int jumperX = Const.WIDTH/2;
         int jumperX = 50;
 //        int jumperY = Const.GROUND - jumperH;
@@ -56,7 +52,7 @@ public class Game{
     }
 //------------------------------------------------------------------------------ 
 //set up the game platform 
-    public void setUp(){ 
+    public void setUpGamePlatform (){
         gameFrame.setSize(Const.WIDTH,Const.HEIGHT); 
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         gameFrame.setResizable(false); 
@@ -76,52 +72,37 @@ public class Game{
 
                 java.util.List<String> gameObjectRecordValues = new ArrayList<>();
                 Scanner rowScanner = new Scanner(gameObjectRecordString);
-                rowScanner.useDelimiter(COMMA_DELIMITER);
+                rowScanner.useDelimiter(Const.COMMA_DELIMITER);
                 while (rowScanner.hasNext()) {
                     gameObjectRecordValues.add(rowScanner.next());
                 }
                 gameObjectRecords.add(gameObjectRecordValues);
             }
 
-            int platformRowID=0;
-            int greenGoosRowID=0;
-            int doorsRowID=0;
             for (int row = 0; row < gameObjectRecords.size(); row++) {
                 java.util.List<String> record = gameObjectRecords.get(row);
-
-//                gameObjs[row] = new GameObject (record.get(0).toUpperCase(),  Integer.parseInt(record.get(1).trim()), Integer.parseInt(record.get(2).trim()));
 
                 String gameObjectType = record.get(0).toUpperCase();
                 int posX = Integer.parseInt(record.get(1).trim());
                 int posY = Integer.parseInt(record.get(2).trim());
 
                 switch (gameObjectType){
-                //switch (gameObjs[row].ObjectType()){
                     case "P":
-                        platforms[platformRowID++] = new Platform (posX, posY);
+                        platformList.add (new Platform (posX, posY));
                         break;
-
                     case "G":
-                        greenGoos[greenGoosRowID++] = new GreenGoo(posX, posY);
+                        greenGooList.add (new GreenGoo (posX, posY));
                         break;
-
                     case "D":
-                        doors[doorsRowID++] = new Door(posX, posY);
+                        doorList.add (new Door (posX, posY));
                         break;
-
                 }
-
             }
-            platformCount = platformRowID;
-            greenGooCount = greenGoosRowID;
-            doorCount = doorsRowID;
-
         }
         catch (Exception e) 
         { 
             System.out.println(e); 
         }
-        int i = 0;
     }
 
 //------------------------------------------------------------------------------   
@@ -137,23 +118,23 @@ public class Game{
             jumper.accelerate();
             jumper.moveX();
             jumper.moveY(Const.GROUND); 
-            //if the object is moving down and collides with the platform
-            //for (int i=0; i<MAX_ROW_LENGTH; i++){
-            for (int i=0; i<platformCount; i++){
-                if (jumper.getVy()>0 && jumper.collides(platforms[i])) {
-                    jumper.setY(platforms[i].getY()-jumper.getHeight());
+
+            for (Platform platform:platformList) {
+                //if the object is moving down and collides with the platform
+                if (jumper.getVy()>0 && jumper.collides(platform)) {
+                    jumper.setY(platform.getY()-jumper.getHeight());
                     jumper.setVy(0);
                 }
                 //if the object is moving up and collides with the platform
-                else if (jumper.getVy()<0 && jumper.collides(platforms[i])) {
-                    jumper.setY(platforms[i].getY() + platforms[i].height());
+                else if (jumper.getVy()<0 && jumper.collides(platform)) {
+                    jumper.setY(platform.getY() + platform.height());
                     jumper.setVy(0);
                 }
             }
 
             //if the object collides with the door
-            for (int i=0; i<doorCount; i++){
-                if (jumper.collides (doors[i])) {
+            for (Door door:doorList) {
+                if (jumper.collides (door)) {
                     gameStatus = "Won";
                     jumper.setVx (0);
                     jumper.setVy (0);
@@ -162,8 +143,8 @@ public class Game{
             }
 
             //if the object collides with any of the GreenGoo
-            for (int i=0; i<greenGooCount; i++){
-                if (jumper.collides (greenGoos[i])) {
+            for (GreenGoo greenGoo:greenGooList) {
+                if (jumper.collides (greenGoo)) {
                     gameStatus = "Lost";
                     jumper.setVx (0);
                     jumper.setVy (0);
@@ -173,11 +154,9 @@ public class Game{
 
             //if jumper hits left edge of the screen, it should bounce back
             if (jumper.getX()<=1) {
-                //jumper.setVx (Math.abs(jumper.getVx()));
                 jumper.setX(2*Math.abs(jumper.getX()));
             }
             else if (jumper.getX()>= Const.WIDTH) {
-                //jumper.setVx (-1*Math.abs(jumper.getVx()));
                 jumper.setX(2*Const.WIDTH-jumper.getX());
             }
         }
@@ -204,18 +183,8 @@ public class Game{
 //            }
         } 
         public void keyReleased(KeyEvent e){
-            int key = e.getKeyCode(); 
-            if (key != KeyEvent.VK_LEFT){ 
-                jumper.setVx(0);
-            }
-            if (key != KeyEvent.VK_RIGHT){ 
-                jumper.setVx(0); 
-            } 
-//            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
-//                    jumper.setVy(0);
-//            }
-        }    
-        public void keyTyped(KeyEvent e){ 
+        }
+        public void keyTyped(KeyEvent e){
         }            
     }     
 //------------------------------------------------------------------------------ 
@@ -232,19 +201,14 @@ public class Game{
             background.draw ( g );
             jumper.draw(g); 
 
-            for (int i = 0; i< MAX_OBJ_NUM; i++){
-                if (platforms[i] != null) {
-                    platforms[i].draw(g);
-                }
+            for (Platform platform:platformList)
+                platform.draw ( g );
 
-                if (greenGoos[i] != null) {
-                    greenGoos[i].draw(g);
-                }
+            for (GreenGoo greenGoo:greenGooList)
+                greenGoo.draw ( g );
 
-                if (doors[i] != null) {
-                    doors[i].draw(g);
-                }
-            }
+            for (Door door:doorList)
+                door.draw ( g );
 
         }
     }     

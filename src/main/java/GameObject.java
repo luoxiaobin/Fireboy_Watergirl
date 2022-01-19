@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class GameObject {
+public abstract class GameObject {
     private final String ObjectType;
     private final int x;
     private final int y;

@@ -16,10 +16,9 @@ public class Jumper {
 
     //------------------------------------------------------------------------------
     Jumper (int x , int y , String picName) {
-        //super ("J", x, y, width, height);
+
         this.x = x;
         this.y = y;
-        //this.box = new Rectangle ( x , y , width , height );
         this.Vx = 0;
         this.Vy = 0;
 
@@ -31,31 +30,24 @@ public class Jumper {
         this.width = this.picture.getWidth ();
         this.height =  this.picture.getHeight ();
         this.box = new Rectangle ( x , y , this.width , this.height );
-
-
     }
 
     //------------------------------------------------------------------------------
     public int getHeight ( ) {
         return this.height;
     }
-
     public int getVy ( ) {
         return this.Vy;
     }
-
     public void setVy (int Vy) {
         this.Vy = Vy;
     }
-
     public int getVx ( ) {
         return this.Vx;
     }
-
     public void setVx (int Vx) {
         this.Vx = Vx;
     }
-
     public Rectangle getBox ( ) {
         return this.box;
     }
@@ -65,11 +57,9 @@ public class Jumper {
     public int getX ( ) {
         return this.x;
     }
-
     public void setY (int y) {
         this.y = y;
     }
-
     public void setBox ( ) {
         this.box.setLocation ( this.x , this.y );
     }
@@ -83,7 +73,6 @@ public class Jumper {
 
     public void accelerate ( ) {
         this.Vy += Const.GRAVITY;
-        //System.out.println("hello");
     }
 
     public void moveX() {

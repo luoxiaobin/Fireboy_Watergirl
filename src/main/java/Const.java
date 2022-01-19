@@ -8,6 +8,7 @@ public final class Const{
     public static final int FRAME_PERIOD = 20;
     public static final int RUN_SPEED = 5;
     public static final int JUMP_SPEED = -20;
+    public static final String COMMA_DELIMITER = ",";
 
     private Const(){
     }

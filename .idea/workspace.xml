@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement - removing general gameobj[] to save storage footprint">
+      <change afterPath="$PROJECT_DIR$/Platform.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlatformLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Platform.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642386476957</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Further improvement - removing general gameobj[] to save storage footprint">
+      <created>1642551194617</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642551194618</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,7 +152,8 @@
     <MESSAGE value="ANOTHER COMMIT" />
     <MESSAGE value="removed unnecessary files etc" />
     <MESSAGE value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
+    <MESSAGE value="Further improvement - removing general gameobj[] to save storage footprint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further improvement - removing general gameobj[] to save storage footprint" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
