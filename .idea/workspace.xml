@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement - removing general gameobj[] to save storage footprint">
-      <change afterPath="$PROJECT_DIR$/Platform.cfg" afterDir="false" />
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlatformLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Const.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -133,8 +125,25 @@
       <option name="project" value="LOCAL" />
       <updated>1642551194618</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Further improvement">
+      <created>1642557398151</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642557398151</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -153,7 +162,8 @@
     <MESSAGE value="removed unnecessary files etc" />
     <MESSAGE value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
     <MESSAGE value="Further improvement - removing general gameobj[] to save storage footprint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Further improvement - removing general gameobj[] to save storage footprint" />
+    <MESSAGE value="Further improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further improvement" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

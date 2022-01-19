@@ -183,6 +183,13 @@ public class Game{
 //            }
         } 
         public void keyReleased(KeyEvent e){
+            int key = e.getKeyCode();
+            if (key != KeyEvent.VK_LEFT){
+                jumper.setVx(0);
+            }
+            if (key != KeyEvent.VK_RIGHT){
+                jumper.setVx(0);
+            }
         }
         public void keyTyped(KeyEvent e){
         }            

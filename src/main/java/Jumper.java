@@ -77,7 +77,7 @@ public class Jumper {
 
     public void moveX() {
         this.x += this.Vx;
-//        this.setVx(0);
+        //this.setVx(0);
         this.setBox ( );
     }
 
