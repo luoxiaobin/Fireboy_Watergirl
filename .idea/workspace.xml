@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement">
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement 0910pm 1/18">
+      <change afterPath="$PROJECT_DIR$/images/greengoo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlatformLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/PlatformLayout.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642557398151</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Further improvement 0910pm 1/18">
+      <created>1642558249097</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642558249097</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -163,7 +174,8 @@
     <MESSAGE value="feature improvements: 1) jump on top of platform; 2) detect collision with door/greengoo; 3) other refactoring changes" />
     <MESSAGE value="Further improvement - removing general gameobj[] to save storage footprint" />
     <MESSAGE value="Further improvement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Further improvement" />
+    <MESSAGE value="Further improvement 0910pm 1/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further improvement 0910pm 1/18" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

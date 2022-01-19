@@ -25,7 +25,7 @@ public class Game{
 
 //------------------------------------------------------------------------------ 
     Game(){ 
-        gameFrame = new JFrame("Game Window"); 
+        gameFrame = new JFrame("Game 'Firegirl and waterboy'");
         gamePanel = new GamePanel(); 
         keyListener = new MyKeyListener();
 
