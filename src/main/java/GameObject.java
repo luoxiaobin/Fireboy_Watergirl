@@ -6,29 +6,23 @@ import java.io.IOException;
 
 public abstract class GameObject {
     private final String ObjectType;
-    private final int x;
-    private final int y;
-    private final int width;
-    private final int height;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
     private BufferedImage picture;
     private final Rectangle box;
 
-    public GameObject (String ObjectType ,
-                       int x ,
-                       int y
-                       ) {
+/*    public GameObject (String ObjectType, int x, int y) {
         this.ObjectType = ObjectType;
         this.x = x;
         this.y = y;
         this.width = 0;
         this.height = 0;
-        this.box = new Rectangle (x, y, width , height );
-    }
+        this.box = new Rectangle(x, y, width , height);
+    }*/
 
-    public GameObject(String ObjectType ,
-                      int x ,
-                      int y ,
-                      String picName){
+    public GameObject(String ObjectType, int x, int y, String picName){
         this.ObjectType = ObjectType;
         this.x = x;
         this.y = y;
@@ -41,29 +35,35 @@ public abstract class GameObject {
         //we still need a Rectangle object to be able to detect collision etc. but let's not draw it
         this.width = this.picture.getWidth ();
         this.height =  this.picture.getHeight ();
-        this.box = new Rectangle ( x , y , this.width , this.height );
-
+        this.box = new Rectangle (x, y, this.width, this.height);
     }
-
 
     public String ObjectType() {
         return ObjectType;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+    
     public int getX() {
-        return x;
+        return this.x;
     }
-
+    
+    public void setY(int y) {
+        this.y = y;
+    }
+    
     public int getY() {
-        return y;
+        return this.y;
     }
 
-    public int width() {
-        return width;
+    public int getWidth() {
+        return this.width;
     }
 
-    public int height() {
-        return height;
+    public int getHeight() {
+        return this.height;
     }
 
     public Rectangle getBox() {

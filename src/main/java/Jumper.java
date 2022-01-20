@@ -12,6 +12,8 @@ public class Jumper {
     private int y;
     private int Vx;
     private int Vy;
+    private boolean isOnMovingPlatform;
+    private MovingPlatform stuckMovingPlatform;
     private BufferedImage picture;
 
     //------------------------------------------------------------------------------
@@ -21,6 +23,7 @@ public class Jumper {
         this.y = y;
         this.Vx = 0;
         this.Vy = 0;
+        this.isOnMovingPlatform = false;
 
         try {
             this.picture = ImageIO.read(new File (picName));
@@ -72,7 +75,10 @@ public class Jumper {
     }
 
     public void accelerate ( ) {
-        this.Vy += Const.GRAVITY;
+        //only when jumper is not on moving platform
+        if (!this.isOnMovingPlatform) {
+            this.Vy += Const.GRAVITY;
+        }
     }
 
     public void moveX() {
@@ -81,12 +87,34 @@ public class Jumper {
         this.setBox ( );
     }
 
+    public void setOnMovingPlatform(MovingPlatform movingPlatform) {
+        this.stuckMovingPlatform = movingPlatform;
+        this.isOnMovingPlatform = true;     
+    }
+    
+    public void unsetOnMovingPlatform() {
+        this.stuckMovingPlatform = null;
+        this.isOnMovingPlatform = false;     
+    }
+
+    public boolean getOnMovingPlatform() {
+        return this.isOnMovingPlatform;     
+    }
+
     public void moveY(int bottomLimit) {
-        this.y += this.Vy;
-        if (this.y + this.height >= bottomLimit) {
-            this.y = bottomLimit - this.height;
-            this.Vy = 0; 
-        } 
+        //when jumper is stuck on moving platform
+        if (this.isOnMovingPlatform) {
+            this.y += this.stuckMovingPlatform.getVy();
+        }
+        else { //when jumper is not on a moving platform
+            this.y += this.Vy;
+            if (this.y + this.height >= bottomLimit) {
+                this.y = bottomLimit - this.height;
+                this.Vy = 0; 
+            }
+        }
+        
+        
         this.setBox(); 
     } 
     

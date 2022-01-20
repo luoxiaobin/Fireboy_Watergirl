@@ -17,6 +17,7 @@ public class Game{
     java.util.List<Platform> platformList;
     java.util.List<GreenGoo> greenGooList;
     java.util.List<Door> doorList;
+    java.util.List<MovingPlatform> movingPlatformList;
 
     Background background;
 
@@ -35,6 +36,7 @@ public class Game{
         platformList = new ArrayList<Platform>();
         greenGooList = new ArrayList<GreenGoo>();
         doorList = new ArrayList<Door>();
+        movingPlatformList = new ArrayList<MovingPlatform>();
 
         //gameObjs = new GameObject[MAX_ROW_LENGTH];
 
@@ -88,13 +90,17 @@ public class Game{
 
                 switch (gameObjectType){
                     case "P":
-                        platformList.add (new Platform (posX, posY));
+                        platformList.add(new Platform(posX, posY));
                         break;
                     case "G":
-                        greenGooList.add (new GreenGoo (posX, posY));
+                        greenGooList.add(new GreenGoo(posX, posY));
                         break;
                     case "D":
-                        doorList.add (new Door (posX, posY));
+                        doorList.add(new Door(posX, posY));
+                        break;
+                    case "M":
+                        int movingDistance = Integer.parseInt(record.get(3).trim());
+                        movingPlatformList.add(new MovingPlatform(posX, posY, movingDistance));
                         break;
                 }
             }
@@ -118,7 +124,27 @@ public class Game{
             jumper.accelerate();
             jumper.moveX();
             jumper.moveY(Const.GROUND); 
+            
+            for (MovingPlatform movingPlatform: movingPlatformList) {
+                movingPlatform.move();
+            }
 
+            
+            for (MovingPlatform movingPlatform: movingPlatformList) {
+                //if the jumper is moving down and collides with a moving platform
+                if (jumper.getVy()>0 && jumper.collides(movingPlatform)) {
+                    jumper.setY(movingPlatform.getY()-jumper.getHeight());
+                    jumper.setOnMovingPlatform(movingPlatform);
+                }
+                //if the jumper is moving up and collides with the platform
+                else if (jumper.getVy()<0 && jumper.collides(movingPlatform)) {
+                    jumper.setY(movingPlatform.getY()-jumper.getHeight());
+                    jumper.setOnMovingPlatform(movingPlatform);
+                }
+                
+            }
+
+            
             for (Platform platform:platformList) {
                 //if the object is moving down and collides with the platform
                 if (jumper.getVy()>0 && jumper.collides(platform)) {
@@ -127,7 +153,7 @@ public class Game{
                 }
                 //if the object is moving up and collides with the platform
                 else if (jumper.getVy()<0 && jumper.collides(platform)) {
-                    jumper.setY(platform.getY() + platform.height());
+                    jumper.setY(platform.getY() + platform.getHeight());
                     jumper.setVy(0);
                 }
             }
@@ -166,17 +192,20 @@ public class Game{
     public class MyKeyListener implements KeyListener{    
         public void keyPressed(KeyEvent e){ 
             int key = e.getKeyCode(); 
-            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
+            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0 || jumper.getOnMovingPlatform())) {
                 jumper.setVy(Const.JUMP_SPEED);
                 System.out.println("up is pressed");
+                jumper.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_LEFT) { 
                 jumper.setVx(-Const.RUN_SPEED);
                 System.out.println("left is pressed");
+                jumper.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_RIGHT) { 
                 jumper.setVx(Const.RUN_SPEED); 
                 System.out.println("right is pressed");
+                jumper.unsetOnMovingPlatform();
             } 
 //            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
 //                    jumper.setVy(Const.JUMP_SPEED);
@@ -205,18 +234,20 @@ public class Game{
         @Override 
         public void paintComponent(Graphics g){  
             super.paintComponent(g); //required
-            background.draw ( g );
+            background.draw(g);
             jumper.draw(g); 
 
             for (Platform platform:platformList)
-                platform.draw ( g );
+                platform.draw(g);
 
             for (GreenGoo greenGoo:greenGooList)
-                greenGoo.draw ( g );
+                greenGoo.draw(g);
 
             for (Door door:doorList)
-                door.draw ( g );
+                door.draw(g);
 
+            for (MovingPlatform movingPlatform: movingPlatformList)
+                movingPlatform.draw(g);
         }
-    }     
+    }
 }

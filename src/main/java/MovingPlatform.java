@@ -7,34 +7,41 @@ public class MovingPlatform extends GameObject {
 
 
     //------------------------------------------------------------------------------
-    MovingPlatform(int x, int y) {
-        this.originalY = y;
+    MovingPlatform(int x, int y, int movingDistance) {
         super ("G", x, y, ".//images//platform.png");
-        this.Vy = 0;
+        this.originalY = y;
+        this.Vy = Const.PLATFORM_SPEED;
+        this.movingDistance = movingDistance; 
     }
 
     public int getVy() {
         return this.Vy;
     }
-        
+  /*      
     public void setVy(int Vy) {
         this.Vy = Vy;
     }
-
-    public void setMovingDistance(int movingDistance) {
+*/
+ /*   public void setMovingDistance(int movingDistance) {
         this.movingDistance = movingDistance; 
     }
-  
-    public void movePlatformDown() {
-        if ((this.getY()-this.originalY) < movingDistance) 
-            this.setY(this.Vy++);
+  */
+    public void move() {
+        
+        this.setY(this.getY()+this.Vy);
+ 
+        //if it reaches movingDistance, it will flip the velocity
+        if ((this.getY()-this.originalY) > movingDistance) {
+            this.Vy = -1 * this.Vy;
+        } 
+        else if ((this.originalY - this.getY()) > movingDistance) {
+             this.Vy = -1 * this.Vy;
+        }
+        
+        
+        
     }
-    
-    public void movePlatformUp() {
-        if ((this.originalY-this.getY()) < movingDistance) 
-            this.setY(this.Vy--);
-    }
-    
+       
     public void draw(Graphics g) {
         g.setColor(Color.blue);
         super.draw(g);
