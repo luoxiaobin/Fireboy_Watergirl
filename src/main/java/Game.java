@@ -193,7 +193,13 @@ public class Game{
         public void keyPressed(KeyEvent e){ 
             int key = e.getKeyCode(); 
             if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0 || jumper.getOnMovingPlatform())) {
-                jumper.setVy(Const.JUMP_SPEED);
+                if (jumper.getOnMovingPlatform()) {
+                    jumper.setVy(Const.JUMP_SPEED + jumper.getMovingPlatformVy());
+                }
+                else {
+                    jumper.setVy(Const.JUMP_SPEED);
+                }
+
                 System.out.println("up is pressed");
                 jumper.unsetOnMovingPlatform();
             }

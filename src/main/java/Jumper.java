@@ -101,6 +101,16 @@ public class Jumper {
         return this.isOnMovingPlatform;     
     }
 
+    public int getMovingPlatformVy() {
+        int movingPlatformVy = 0;
+
+        if (this.isOnMovingPlatform)
+            movingPlatformVy = stuckMovingPlatform.getVy();
+
+        return movingPlatformVy;
+    }
+
+
     public void moveY(int bottomLimit) {
         //when jumper is stuck on moving platform
         if (this.isOnMovingPlatform) {
