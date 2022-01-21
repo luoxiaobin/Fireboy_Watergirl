@@ -17,7 +17,7 @@ public class Jumper {
     private BufferedImage picture;
 
     //------------------------------------------------------------------------------
-    Jumper (int x , int y , String picName) {
+    Jumper(int x, int y, String picName) {
 
         this.x = x;
         this.y = y;
@@ -32,7 +32,7 @@ public class Jumper {
 
         this.width = this.picture.getWidth ();
         this.height =  this.picture.getHeight ();
-        this.box = new Rectangle ( x , y , this.width , this.height );
+        this.box = new Rectangle (x, y, this.width, this.height);
     }
 
     //------------------------------------------------------------------------------
@@ -103,14 +103,13 @@ public class Jumper {
 
     public int getMovingPlatformVy() {
         int movingPlatformVy = 0;
-
-        if (this.isOnMovingPlatform)
+        if ( this.isOnMovingPlatform)
             movingPlatformVy = stuckMovingPlatform.getVy();
-
-        return movingPlatformVy;
+        
+        return movingPlatformVy;     
     }
 
-
+    
     public void moveY(int bottomLimit) {
         //when jumper is stuck on moving platform
         if (this.isOnMovingPlatform) {
