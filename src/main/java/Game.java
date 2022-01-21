@@ -45,12 +45,16 @@ public class Game{
 //        int jumperW = 20;
 //        int jumperH = 32;
 //        int jumperX = Const.WIDTH/2;
-        int jumperX = 50;
 //        int jumperY = Const.GROUND - jumperH;
+
+        int jumperX = 50;
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
-        //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH);
-        //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH, ".//images//watergirl_small.png");
         firegirl = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
+ 
+        jumperX = 250;
+        jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
+ 
+        waterboy = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
 
         SetupGameObjects();
     }
@@ -98,7 +102,8 @@ public class Game{
                         greenGooList.add(new GreenGoo(posX, posY));
                         break;
                     case "D":
-                        doorList.add(new Door(posX, posY));
+                        String doorName = record.get(3).trim();
+                        doorList.add(new Door(posX, posY, doorName));
                         break;
                     case "M":
                         int movingDistance = Integer.parseInt(record.get(3).trim());
@@ -123,14 +128,19 @@ public class Game{
             gameFrame.repaint(); 
             try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
 
-            firegirl.accelerate();
-            firegirl.moveX();
-            firegirl.moveY(Const.GROUND); 
-            
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 movingPlatform.move();
             }
 
+            
+            firegirl.accelerate();
+            firegirl.moveX();
+            firegirl.moveY(Const.GROUND); 
+            waterboy.accelerate();
+            waterboy.moveX();
+            waterboy.moveY(Const.GROUND);
+            
+      
             
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 //if the jumper is moving down and collides with a moving platform
@@ -142,6 +152,16 @@ public class Game{
                 else if (firegirl.getVy()<0 && firegirl.collides(movingPlatform)) {
                     firegirl.setY(movingPlatform.getY()-firegirl.getHeight());
                     firegirl.setOnMovingPlatform(movingPlatform);
+                }
+                //if the jumper is moving down and collides with a moving platform
+                if (waterboy.getVy()>0 && waterboy.collides(movingPlatform)) {
+                    waterboy.setY(movingPlatform.getY()-waterboy.getHeight());
+                    waterboy.setOnMovingPlatform(movingPlatform);
+                }
+                //if the jumper is moving up and collides with the platform
+                else if (waterboy.getVy()<0 && waterboy.collides(movingPlatform)) {
+                    waterboy.setY(movingPlatform.getY()-waterboy.getHeight());
+                    waterboy.setOnMovingPlatform(movingPlatform);
                 }
                 
             }
@@ -158,16 +178,35 @@ public class Game{
                     firegirl.setY(platform.getY() + platform.getHeight());
                     firegirl.setVy(0);
                 }
+                //if the object is moving down and collides with the platform
+                if (waterboy.getVy()>0 && waterboy.collides(platform)) {
+                    waterboy.setY(platform.getY()-waterboy.getHeight());
+                    waterboy.setVy(0);
+                }
+                //if the object is moving up and collides with the platform
+                else if (waterboy.getVy()<0 && waterboy.collides(platform)) {
+                    waterboy.setY(platform.getY() + platform.getHeight());
+                    waterboy.setVy(0);
+                }
+        
             }
 
             //if the object collides with the door
             for (Door door:doorList) {
-                if (firegirl.collides (door)) {
+                if (door.getName() == "red" && firegirl.collides (door)) {
                     gameStatus = "Won";
                     firegirl.setVx (0);
                     firegirl.setVy (0);
-                    System.out.println ("You WIN!!!");
+                    System.out.println ("firegirl WIN!!!");
                 }
+                
+                if (door.getName() == "blue" && waterboy.collides (door)) {
+                    gameStatus = "Won";
+                    waterboy.setVx (0);
+                    waterboy.setVy (0);
+                    System.out.println ("waterboy WIN!!!");
+                }
+   
             }
 
             //if the object collides with any of the GreenGoo
@@ -178,6 +217,12 @@ public class Game{
                     firegirl.setVy (0);
                     System.out.println("You LOST!!!");
                 }
+                if (waterboy.collides (greenGoo)) {
+                    gameStatus = "Lost";
+                    waterboy.setVx (0);
+                    waterboy.setVy (0);
+                    System.out.println("You LOST!!!");
+                }               
             }
 
             //if jumper hits left edge of the screen, it should bounce back
@@ -187,6 +232,15 @@ public class Game{
             else if (firegirl.getX()>= Const.WIDTH) {
                 firegirl.setX(2*Const.WIDTH-firegirl.getX());
             }
+            
+            if (waterboy.getX()<=1) {
+                waterboy.setX(2*Math.abs(waterboy.getX()));
+            }
+            else if (waterboy.getX()>= Const.WIDTH) {
+                waterboy.setX(2*Const.WIDTH-waterboy.getX());
+            }
+ 
+        
         }
     }   
 //------------------------------------------------------------------------------   
@@ -220,20 +274,20 @@ public class Game{
             
 // for firegirl,needs to change
                       //int key = e.getKeyCode(); 
-            if ((key == KeyEvent.VK_W) && (firegirl.getVy() == 0 || firegirl.getOnMovingPlatform())) {
-                firegirl.setVy(Const.JUMP_SPEED);
+            if ((key == KeyEvent.VK_W) && (waterboy.getVy() == 0 || waterboy.getOnMovingPlatform())) {
+                waterboy.setVy(Const.JUMP_SPEED);
                 System.out.println("up is pressed");
-                firegirl.unsetOnMovingPlatform();
+                waterboy.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_A) { 
-                firegirl.setVx(-Const.RUN_SPEED);
+                waterboy.setVx(-Const.RUN_SPEED);
                 System.out.println("left is pressed");
-                firegirl.unsetOnMovingPlatform();
+                waterboy.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_D) { 
-                firegirl.setVx(Const.RUN_SPEED); 
+                waterboy.setVx(Const.RUN_SPEED); 
                 System.out.println("right is pressed");
-                firegirl.unsetOnMovingPlatform();
+                waterboy.unsetOnMovingPlatform();
             } 
 //            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0)) {
 //                    firegirl.setVy(Const.JUMP_SPEED);
@@ -251,10 +305,10 @@ public class Game{
           //for firegirl
             // int key = e.getKeyCode();
             if (key != KeyEvent.VK_A){
-                firegirl.setVx(0);
+                waterboy.setVx(0);
             }
             if (key != KeyEvent.VK_D){
-                firegirl.setVx(0);
+                waterboy.setVx(0);
             }
             
             
@@ -275,6 +329,7 @@ public class Game{
             super.paintComponent(g); //required
             background.draw(g);
             firegirl.draw(g); 
+            waterboy.draw(g);
 
             for (Platform platform:platformList)
                 platform.draw(g);
