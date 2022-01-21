@@ -13,7 +13,9 @@ public class Game{
     GamePanel gamePanel;    
     MyKeyListener keyListener;  
     //game objects 
-    Jumper jumper; 
+    Jumper firegirl; 
+    Jumper waterboy; 
+    
     java.util.List<Platform> platformList;
     java.util.List<GreenGoo> greenGooList;
     java.util.List<Door> doorList;
@@ -48,7 +50,7 @@ public class Game{
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
         //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH);
         //jumper = new Jumper(jumperX, jumperY, jumperW, jumperH, ".//images//watergirl_small.png");
-        jumper = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
+        firegirl = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
 
         SetupGameObjects();
     }
@@ -121,9 +123,9 @@ public class Game{
             gameFrame.repaint(); 
             try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
 
-            jumper.accelerate();
-            jumper.moveX();
-            jumper.moveY(Const.GROUND); 
+            firegirl.accelerate();
+            firegirl.moveX();
+            firegirl.moveY(Const.GROUND); 
             
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 movingPlatform.move();
@@ -132,14 +134,14 @@ public class Game{
             
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 //if the jumper is moving down and collides with a moving platform
-                if (jumper.getVy()>0 && jumper.collides(movingPlatform)) {
-                    jumper.setY(movingPlatform.getY()-jumper.getHeight());
-                    jumper.setOnMovingPlatform(movingPlatform);
+                if (firegirl.getVy()>0 && firegirl.collides(movingPlatform)) {
+                    firegirl.setY(movingPlatform.getY()-firegirl.getHeight());
+                    firegirl.setOnMovingPlatform(movingPlatform);
                 }
                 //if the jumper is moving up and collides with the platform
-                else if (jumper.getVy()<0 && jumper.collides(movingPlatform)) {
-                    jumper.setY(movingPlatform.getY()-jumper.getHeight());
-                    jumper.setOnMovingPlatform(movingPlatform);
+                else if (firegirl.getVy()<0 && firegirl.collides(movingPlatform)) {
+                    firegirl.setY(movingPlatform.getY()-firegirl.getHeight());
+                    firegirl.setOnMovingPlatform(movingPlatform);
                 }
                 
             }
@@ -147,43 +149,43 @@ public class Game{
             
             for (Platform platform:platformList) {
                 //if the object is moving down and collides with the platform
-                if (jumper.getVy()>0 && jumper.collides(platform)) {
-                    jumper.setY(platform.getY()-jumper.getHeight());
-                    jumper.setVy(0);
+                if (firegirl.getVy()>0 && firegirl.collides(platform)) {
+                    firegirl.setY(platform.getY()-firegirl.getHeight());
+                    firegirl.setVy(0);
                 }
                 //if the object is moving up and collides with the platform
-                else if (jumper.getVy()<0 && jumper.collides(platform)) {
-                    jumper.setY(platform.getY() + platform.getHeight());
-                    jumper.setVy(0);
+                else if (firegirl.getVy()<0 && firegirl.collides(platform)) {
+                    firegirl.setY(platform.getY() + platform.getHeight());
+                    firegirl.setVy(0);
                 }
             }
 
             //if the object collides with the door
             for (Door door:doorList) {
-                if (jumper.collides (door)) {
+                if (firegirl.collides (door)) {
                     gameStatus = "Won";
-                    jumper.setVx (0);
-                    jumper.setVy (0);
+                    firegirl.setVx (0);
+                    firegirl.setVy (0);
                     System.out.println ("You WIN!!!");
                 }
             }
 
             //if the object collides with any of the GreenGoo
             for (GreenGoo greenGoo:greenGooList) {
-                if (jumper.collides (greenGoo)) {
+                if (firegirl.collides (greenGoo)) {
                     gameStatus = "Lost";
-                    jumper.setVx (0);
-                    jumper.setVy (0);
+                    firegirl.setVx (0);
+                    firegirl.setVy (0);
                     System.out.println("You LOST!!!");
                 }
             }
 
             //if jumper hits left edge of the screen, it should bounce back
-            if (jumper.getX()<=1) {
-                jumper.setX(2*Math.abs(jumper.getX()));
+            if (firegirl.getX()<=1) {
+                firegirl.setX(2*Math.abs(firegirl.getX()));
             }
-            else if (jumper.getX()>= Const.WIDTH) {
-                jumper.setX(2*Const.WIDTH-jumper.getX());
+            else if (firegirl.getX()>= Const.WIDTH) {
+                firegirl.setX(2*Const.WIDTH-firegirl.getX());
             }
         }
     }   
@@ -192,33 +194,70 @@ public class Game{
     public class MyKeyListener implements KeyListener{    
         public void keyPressed(KeyEvent e){ 
             int key = e.getKeyCode(); 
-            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0 || jumper.getOnMovingPlatform())) {
-                jumper.setVy(Const.JUMP_SPEED);
+            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0 || firegirl.getOnMovingPlatform())) {
+                if (firegirl.getOnMovingPlatform()) {
+                    firegirl.setVy(Const.JUMP_SPEED + firegirl.getMovingPlatformVy());
+                }
+                else {
+                    firegirl.setVy(Const.JUMP_SPEED);
+                }
                 System.out.println("up is pressed");
-                jumper.unsetOnMovingPlatform();
+                firegirl.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_LEFT) { 
-                jumper.setVx(-Const.RUN_SPEED);
+                firegirl.setVx(-Const.RUN_SPEED);
                 System.out.println("left is pressed");
-                jumper.unsetOnMovingPlatform();
+                firegirl.unsetOnMovingPlatform();
             }
             if (key == KeyEvent.VK_RIGHT) { 
-                jumper.setVx(Const.RUN_SPEED); 
+                firegirl.setVx(Const.RUN_SPEED); 
                 System.out.println("right is pressed");
-                jumper.unsetOnMovingPlatform();
+                firegirl.unsetOnMovingPlatform();
             } 
-//            if ((key == KeyEvent.VK_UP) && (jumper.getVy() == 0)) {
-//                    jumper.setVy(Const.JUMP_SPEED);
+//            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0)) {
+//                    firegirl.setVy(Const.JUMP_SPEED);
 //            }
+            
+// for firegirl,needs to change
+                      //int key = e.getKeyCode(); 
+            if ((key == KeyEvent.VK_W) && (firegirl.getVy() == 0 || firegirl.getOnMovingPlatform())) {
+                firegirl.setVy(Const.JUMP_SPEED);
+                System.out.println("up is pressed");
+                firegirl.unsetOnMovingPlatform();
+            }
+            if (key == KeyEvent.VK_A) { 
+                firegirl.setVx(-Const.RUN_SPEED);
+                System.out.println("left is pressed");
+                firegirl.unsetOnMovingPlatform();
+            }
+            if (key == KeyEvent.VK_D) { 
+                firegirl.setVx(Const.RUN_SPEED); 
+                System.out.println("right is pressed");
+                firegirl.unsetOnMovingPlatform();
+            } 
+//            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0)) {
+//                    firegirl.setVy(Const.JUMP_SPEED);
+//            }
+            
         } 
         public void keyReleased(KeyEvent e){
             int key = e.getKeyCode();
             if (key != KeyEvent.VK_LEFT){
-                jumper.setVx(0);
+                firegirl.setVx(0);
             }
             if (key != KeyEvent.VK_RIGHT){
-                jumper.setVx(0);
+                firegirl.setVx(0);
             }
+          //for firegirl
+            // int key = e.getKeyCode();
+            if (key != KeyEvent.VK_A){
+                firegirl.setVx(0);
+            }
+            if (key != KeyEvent.VK_D){
+                firegirl.setVx(0);
+            }
+            
+            
         }
         public void keyTyped(KeyEvent e){
         }            
@@ -235,7 +274,7 @@ public class Game{
         public void paintComponent(Graphics g){  
             super.paintComponent(g); //required
             background.draw(g);
-            jumper.draw(g); 
+            firegirl.draw(g); 
 
             for (Platform platform:platformList)
                 platform.draw(g);
