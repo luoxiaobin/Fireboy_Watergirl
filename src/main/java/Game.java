@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Game{ 
     JFrame gameFrame; 
-    GamePanel gamePanel;    
+
     MyKeyListener keyListener;  
     //game objects 
     Jumper firegirl; 
@@ -29,7 +29,6 @@ public class Game{
         //gameFrame = new JFrame("Game 'Firegirl and waterboy'");
 
         this.gameFrame = gameFrame;
-        gamePanel = new GamePanel();
         keyListener = new MyKeyListener();
         this.gameStatus = "playing";
         this.gameActive = true;
@@ -67,9 +66,6 @@ public class Game{
         gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
-        gamePanel.addKeyListener(keyListener); 
-        gameFrame.add(gamePanel);  
-        gameFrame.setVisible(true);     
     }
 
     public void SetupGameObjects() {
@@ -125,6 +121,12 @@ public class Game{
 //    main game loop 
     public void runGameLoop(){
 
+        GamePanel gamePanel;
+        gamePanel = new GamePanel();
+        gamePanel.addKeyListener(keyListener);
+        gameFrame.add(gamePanel);
+        gameFrame.setVisible(true);
+
         //while (true) {
         while (gameStatus.equals("playing")) {
             gameFrame.repaint(); 
@@ -136,11 +138,11 @@ public class Game{
             
             firegirl.accelerate();
             firegirl.moveX();
-            firegirl.moveY(Const.GROUND); 
+            firegirl.moveY(Const.GROUND);
             waterboy.accelerate();
             waterboy.moveX();
             waterboy.moveY(Const.GROUND);
-            
+
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 //if the jumper is moving down and collides with a moving platform
                 if (firegirl.getVy()>0 && firegirl.collides(movingPlatform)) {
@@ -162,7 +164,7 @@ public class Game{
                     waterboy.setY(movingPlatform.getY()-waterboy.getHeight());
                     waterboy.setOnMovingPlatform(movingPlatform);
                 }
-                
+
             }
             
             for (Platform platform:platformList) {
@@ -186,7 +188,7 @@ public class Game{
                     waterboy.setY(platform.getY() + platform.getHeight());
                     waterboy.setVy(0);
                 }
-        
+
             }
 
             //if the object collides with the door
@@ -206,7 +208,7 @@ public class Game{
                     waterboy.setVy (0);
                     System.out.println ("waterboy WIN!!!");
                 }
-   
+
             }
 
             //if the object collides with any of the GreenGoo

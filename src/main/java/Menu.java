@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class Menu extends JFrame{
+//class Menu extends JFrame{
+class Menu {
     JFrame gameFrame;
 //    JPanel gamePanel;
 
@@ -17,7 +18,6 @@ class Menu extends JFrame{
         gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
-        gameFrame.setVisible(true);
 
         //Create the menu bar.
         gameMenuBar = new JMenuBar();
@@ -35,10 +35,6 @@ class Menu extends JFrame{
         gameMenuItemStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 startSignal = true;
-                //gameFrame.dispose();
-                   //Game game = new Game();
-                //game.setUpGamePlatform();
-                //game.runGameLoop();
             }
         });
 
@@ -51,15 +47,20 @@ class Menu extends JFrame{
         gameSubmenu.add(gameMenuItemExit);
         gameFrame.setJMenuBar(gameMenuBar);
 
-        //gamePanel = new JPanel();
-        //gameFrame.add(gamePanel);
         gameFrame.setVisible(true);
     }
 
 
     public static void main( String[] args ) {
-        Menu f = new Menu();
-        f.setVisible(true);
+        Menu gameMenu = new Menu();
+
+        JFrame gameFrame = new JFrame("Firegirl and Waterboy");
+
+        Game game = new Game(gameFrame);
+        game.setUpGamePlatform();
+        game.runGameLoop();
+
+        //gameMenu.gameFrame.setVisible(true);
     }
 
 }

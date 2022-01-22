@@ -121,7 +121,8 @@ public class Jumper {
             this.y += this.Vy;
             if (this.y + this.height >= bottomLimit) {
                 this.y = bottomLimit - this.height;
-                this.Vy = 0; 
+                this.Vy = 0;
+                System.out.println("On the ground!");
             }
         }
         this.setBox(); 

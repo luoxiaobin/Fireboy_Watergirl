@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class MovingPlatform extends GameObject {
     private int Vy;
-    private int movingDistance;
+    private final int movingDistance;
     private final int originalY;
     private String movingDirection;
 
@@ -39,11 +39,11 @@ public class MovingPlatform extends GameObject {
         this.setY(this.getY()+this.Vy);
  
         //if it reaches movingDistance, it will flip the velocity
-        if ((this.getY()-this.originalY) > movingDistance) {
+        if ((this.getY()-this.originalY) > this.movingDistance) {
             this.Vy = -1 * this.Vy;
             this.setMovingDirection("Up");
         } 
-        else if ((this.originalY - this.getY()) > movingDistance) {
+        else if ((this.originalY - this.getY()) > this.movingDistance) {
              this.Vy = -1 * this.Vy;
              this.setMovingDirection("Down");
         }
