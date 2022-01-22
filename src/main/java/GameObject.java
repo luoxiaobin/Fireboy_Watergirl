@@ -33,8 +33,8 @@ public abstract class GameObject {
         catch (IOException ex){};
 
         //we still need a Rectangle object to be able to detect collision etc. but let's not draw it
-        this.width = this.picture.getWidth ();
-        this.height =  this.picture.getHeight ();
+        this.width = this.picture.getWidth();
+        this.height =  this.picture.getHeight();
         this.box = new Rectangle (x, y, this.width, this.height);
     }
 
@@ -71,10 +71,10 @@ public abstract class GameObject {
     }
 
     //------------------------------------------------------------------------------
-    public void draw (Graphics g) {
+    public void draw(Graphics g) {
         //g.fillRect ( this.x , this.y , this.width , this.height );
         if (this.ObjectType.equals("B")) {
-            g.drawImage ( this.picture, this.x, this.y, null);
+            g.drawImage (this.picture, this.x, this.y, null);
         }
         else {
             //g.drawImage(this.picture, this.x-this.width, this.y-this.height, null);

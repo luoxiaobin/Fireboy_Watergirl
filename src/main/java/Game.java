@@ -6,15 +6,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
 public class Game{ 
     JFrame gameFrame; 
     GamePanel gamePanel;    
     MyKeyListener keyListener;  
     //game objects 
     Jumper firegirl; 
-    Jumper waterboy; 
+    Jumper waterboy;
+    String gameStatus;
+    public boolean gameActive;
     
     java.util.List<Platform> platformList;
     java.util.List<GreenGoo> greenGooList;
@@ -23,14 +23,13 @@ public class Game{
 
     Background background;
 
-
-
-
 //------------------------------------------------------------------------------ 
-    Game(){ 
+    Game() { 
         gameFrame = new JFrame("Game 'Firegirl and waterboy'");
         gamePanel = new GamePanel(); 
         keyListener = new MyKeyListener();
+        this.gameStatus = "playing";
+        this.gameActive = true;
 
         String bckgPic = "images/background.png";
         background = new Background(bckgPic);
@@ -121,7 +120,6 @@ public class Game{
 //------------------------------------------------------------------------------   
 //    main game loop 
     public void runGameLoop(){
-        String gameStatus = "playing";
 
         //while (true) {
         while (gameStatus.equals("playing")) {
@@ -131,7 +129,6 @@ public class Game{
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 movingPlatform.move();
             }
-
             
             firegirl.accelerate();
             firegirl.moveX();
@@ -139,8 +136,6 @@ public class Game{
             waterboy.accelerate();
             waterboy.moveX();
             waterboy.moveY(Const.GROUND);
-            
-      
             
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 //if the jumper is moving down and collides with a moving platform
@@ -165,7 +160,6 @@ public class Game{
                 }
                 
             }
-
             
             for (Platform platform:platformList) {
                 //if the object is moving down and collides with the platform
@@ -198,6 +192,8 @@ public class Game{
                     firegirl.setVx (0);
                     firegirl.setVy (0);
                     System.out.println ("firegirl WIN!!!");
+//                    gameFrame.dispose();
+//                    new Menu();
                 }
                 
                 if (door.getName() == "blue" && waterboy.collides (door)) {
@@ -216,12 +212,17 @@ public class Game{
                     firegirl.setVx (0);
                     firegirl.setVy (0);
                     System.out.println("You LOST!!!");
+                    gameFrame.dispose();
+                    //new Menu();
                 }
                 if (waterboy.collides (greenGoo)) {
                     gameStatus = "Lost";
                     waterboy.setVx (0);
                     waterboy.setVy (0);
                     System.out.println("You LOST!!!");
+                    //game.dispose();
+                      gameFrame.dispose();
+                    //new Menu();
                 }               
             }
 
@@ -302,8 +303,6 @@ public class Game{
             if (key != KeyEvent.VK_RIGHT){
                 firegirl.setVx(0);
             }
-          //for firegirl
-            // int key = e.getKeyCode();
             if (key != KeyEvent.VK_A){
                 waterboy.setVx(0);
             }

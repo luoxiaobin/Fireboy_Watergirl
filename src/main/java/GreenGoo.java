@@ -4,7 +4,7 @@ public class GreenGoo extends GameObject {
 
     //------------------------------------------------------------------------------
     GreenGoo (int x , int y) {
-        super ( "G" , x , y , ".//images//greengoo.png");
+        super ("G", x, y, ".//images//greengoo.png");
     }
 
     public void draw(Graphics g) {

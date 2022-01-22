@@ -37,6 +37,7 @@ class Menu {
         public void actionPerformed(ActionEvent event){          //this is the only method in this class  
             // The code below will run automatically when the enterButton is activated 
             active = false;
+            menu.dispose();
 //            menu.dispose();
 //            Game game = new Game(); 
 //            game.setUpGamePlatform();
@@ -48,6 +49,7 @@ class Menu {
         public void actionPerformed(ActionEvent event){          //this is the only method in this class  
             // The code below will run automatically when the enterButton is activated 
             menu.dispose();
+            System.exit(0);
         } 
     }
 
