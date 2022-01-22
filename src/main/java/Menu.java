@@ -2,55 +2,64 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class Menu {
-    JFrame menu;
-    JPanel panel;
-    JButton startButton;
-    JButton exitButton;
-    boolean active;
-    
-    Menu() {
-        menu = new JFrame("Firegirl and Waterboy");
-        menu.setSize(800,600);
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel = new JPanel();
-        menu.add(panel);
-        startButton = new JButton("Start Game");
-        exitButton = new JButton("Exit");
-        panel.add(startButton);
-        menu.setVisible(true); 
-        this.active = true;
-    }
-    public void setUpMenu() {
-        menu.setSize(400,200);
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu.setLayout(new FlowLayout());
-        menu.add(panel);
-        panel.setLayout(new GridLayout(0,1));
-        panel.add(startButton);
-        panel.add(exitButton);
-        startButton.addActionListener(new StartButtonListener());
-        exitButton.addActionListener(new ExitButtonListener());
-        menu.setVisible(true);
-    }
-    public class StartButtonListener implements ActionListener{       //this is the required class definition 
-        public void actionPerformed(ActionEvent event){          //this is the only method in this class  
-            // The code below will run automatically when the enterButton is activated 
-            active = false;
-            menu.dispose();
-//            menu.dispose();
-//            Game game = new Game(); 
-//            game.setUpGamePlatform();
-//            game.runGameLoop();
+class Menu extends JFrame{
+    JFrame gameFrame;
+//    JPanel gamePanel;
 
-        } 
+    JMenuBar gameMenuBar;
+    JMenu gameSubmenu;
+    JMenuItem gameMenuItemStart, gameMenuItemExit;
+
+    boolean startSignal=false;
+
+    Menu() {
+        gameFrame = new JFrame("Firegirl and Waterboy");
+        gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setResizable(false);
+        gameFrame.setVisible(true);
+
+        //Create the menu bar.
+        gameMenuBar = new JMenuBar();
+
+        //Build the first menu.
+        gameSubmenu = new JMenu("Game");
+        gameSubmenu.setMnemonic(KeyEvent.VK_G);
+        gameSubmenu.getAccessibleContext().setAccessibleDescription(
+                "The only menu in this program that has menu items");
+        gameMenuBar.add(gameSubmenu);
+
+        //a group of JMenuItems
+        gameMenuItemStart = new JMenuItem("Start", KeyEvent.VK_S );
+        gameSubmenu.add(gameMenuItemStart);
+        gameMenuItemStart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                startSignal = true;
+                //gameFrame.dispose();
+                   //Game game = new Game();
+                //game.setUpGamePlatform();
+                //game.runGameLoop();
+            }
+        });
+
+        gameMenuItemExit = new JMenuItem("Exit", KeyEvent.VK_X );
+        gameMenuItemExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                System.exit(0);
+            }
+        });
+        gameSubmenu.add(gameMenuItemExit);
+        gameFrame.setJMenuBar(gameMenuBar);
+
+        //gamePanel = new JPanel();
+        //gameFrame.add(gamePanel);
+        gameFrame.setVisible(true);
     }
-   public class ExitButtonListener implements ActionListener{       //this is the required class definition 
-        public void actionPerformed(ActionEvent event){          //this is the only method in this class  
-            // The code below will run automatically when the enterButton is activated 
-            menu.dispose();
-            System.exit(0);
-        } 
+
+
+    public static void main( String[] args ) {
+        Menu f = new Menu();
+        f.setVisible(true);
     }
 
 }

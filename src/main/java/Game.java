@@ -24,9 +24,12 @@ public class Game{
     Background background;
 
 //------------------------------------------------------------------------------ 
-    Game() { 
-        gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-        gamePanel = new GamePanel(); 
+    Game(JFrame gameFrame) {
+
+        //gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+
+        this.gameFrame = gameFrame;
+        gamePanel = new GamePanel();
         keyListener = new MyKeyListener();
         this.gameStatus = "playing";
         this.gameActive = true;
@@ -49,20 +52,21 @@ public class Game{
         int jumperX = 50;
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
         firegirl = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
- 
+
         jumperX = 250;
         jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
- 
+
         waterboy = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
 
         SetupGameObjects();
     }
-//------------------------------------------------------------------------------ 
+
+//------------------------------------------------------------------------------
 //set up the game platform 
     public void setUpGamePlatform (){
-        gameFrame.setSize(Const.WIDTH,Const.HEIGHT); 
-        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-        gameFrame.setResizable(false); 
+        gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setResizable(false);
         gamePanel.addKeyListener(keyListener); 
         gameFrame.add(gamePanel);  
         gameFrame.setVisible(true);     
@@ -343,4 +347,12 @@ public class Game{
                 movingPlatform.draw(g);
         }
     }
+
+    public static void main(String [] args) throws Exception {
+        JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+        Game game = new Game(gameFrame);
+        game.setUpGamePlatform();
+        game.runGameLoop();
+    }
+
 }

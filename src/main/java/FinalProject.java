@@ -1,25 +1,29 @@
-public class FinalProject{ 
+public class FinalProject{
      
     public static void main(String [] args) throws Exception{ 
-        Menu menu = new Menu();
-        menu.active = true;
-        menu.setUpMenu();
-        while (menu.active) {
-            System.out.println(menu.active);
-        }
-        Game game = new Game(); 
+
+        Menu gameMenu = new Menu();
+        gameMenu.startSignal = false;
+        //gameMenu.setUpMenu();
+        Game game = new Game(gameMenu.gameFrame);
         game.setUpGamePlatform();
+
+        while (!gameMenu.startSignal) {
+            System.out.println(gameMenu.startSignal);
+        }
+
+        game.gameFrame.setVisible(true);
         game.runGameLoop();
-        while (game.gameActive) {
+        while (game.gameActive ) {
             System.out.println(game.gameStatus);
             if (game.gameStatus == "Lost") {
                 System.out.println("you lose");
-                LoseWindow loseWindow = new LoseWindow();
-                loseWindow.setUpLoseWindow();
-                while (loseWindow.active) {
-                    System.out.println(loseWindow.active);
+                gameMenu = new Menu();
+                gameMenu.startSignal = false;
+                while (!gameMenu.startSignal) {
+                    System.out.println(gameMenu.startSignal);
                 }
-                game = new Game(); 
+                game = new Game(gameMenu.gameFrame);
                 game.setUpGamePlatform();
                 game.runGameLoop();
             }
