@@ -13,7 +13,7 @@ public class Jumper {
     private int Vx;
     private int Vy;
     private boolean isOnMovingPlatform;
-    private MovingPlatform stuckMovingPlatform;
+    private MovingPlatform currentMovingPlatform;
     private BufferedImage picture;
 
     //------------------------------------------------------------------------------
@@ -30,51 +30,51 @@ public class Jumper {
         }
         catch (IOException ex){};
 
-        this.width = this.picture.getWidth ();
-        this.height =  this.picture.getHeight ();
-        this.box = new Rectangle (x, y, this.width, this.height);
+        this.width = this.picture.getWidth();
+        this.height = this.picture.getHeight();
+        this.box = new Rectangle(x, y, this.width, this.height);
     }
 
     //------------------------------------------------------------------------------
-    public int getHeight ( ) {
+    public int getHeight() {
         return this.height;
     }
-    public int getVy ( ) {
+    public int getVy() {
         return this.Vy;
     }
-    public void setVy (int Vy) {
+    public void setVy(int Vy) {
         this.Vy = Vy;
     }
-    public int getVx ( ) {
+    public int getVx() {
         return this.Vx;
     }
-    public void setVx (int Vx) {
+    public void setVx(int Vx) {
         this.Vx = Vx;
     }
-    public Rectangle getBox ( ) {
+    public Rectangle getBox() {
         return this.box;
     }
-    public void setX (int x) {
+    public void setX(int x) {
         this.x = x;
     }
-    public int getX ( ) {
+    public int getX() {
         return this.x;
     }
-    public void setY (int y) {
+    public void setY(int y) {
         this.y = y;
     }
-    public void setBox ( ) {
-        this.box.setLocation ( this.x , this.y );
+    public void setBox() {
+        this.box.setLocation(this.x, this.y);
     }
 
     //------------------------------------------------------------------------------
     public void draw (Graphics g) {
-        g.setColor ( Color.red );
-        //g.fillRect ( this.x , this.y , this.width , this.height );
+        g.setColor(Color.red);
+        //g.fillRect (this.x, this.y, this.width, this.height);
         g.drawImage(this.picture, this.x, this.y, null);
     }
 
-    public void accelerate ( ) {
+    public void accelerate() {
         //only when jumper is not on moving platform
         if (!this.isOnMovingPlatform) {
             this.Vy += Const.GRAVITY;
@@ -84,16 +84,16 @@ public class Jumper {
     public void moveX() {
         this.x += this.Vx;
         //this.setVx(0);
-        this.setBox ( );
+        this.setBox();
     }
 
     public void setOnMovingPlatform(MovingPlatform movingPlatform) {
-        this.stuckMovingPlatform = movingPlatform;
+        this.currentMovingPlatform = movingPlatform;
         this.isOnMovingPlatform = true;     
     }
     
     public void unsetOnMovingPlatform() {
-        this.stuckMovingPlatform = null;
+        this.currentMovingPlatform = null;
         this.isOnMovingPlatform = false;     
     }
 
@@ -103,17 +103,19 @@ public class Jumper {
 
     public int getMovingPlatformVy() {
         int movingPlatformVy = 0;
-        if ( this.isOnMovingPlatform)
-            movingPlatformVy = stuckMovingPlatform.getVy();
-        
+        if (this.isOnMovingPlatform)
+            movingPlatformVy = currentMovingPlatform.getVy();
         return movingPlatformVy;     
     }
 
     
     public void moveY(int bottomLimit) {
         //when jumper is stuck on moving platform
-        if (this.isOnMovingPlatform) {
-            this.y += this.stuckMovingPlatform.getVy();
+        if (this.isOnMovingPlatform && this.currentMovingPlatform.getMovingDirection().equals("Up")) {
+            this.y -= this.currentMovingPlatform.getVy();
+        }
+        else if (this.isOnMovingPlatform && this.currentMovingPlatform.getMovingDirection().equals("Down")) {
+            this.y += this.currentMovingPlatform.getVy();
         }
         else { //when jumper is not on a moving platform
             this.y += this.Vy;
@@ -122,13 +124,11 @@ public class Jumper {
                 this.Vy = 0; 
             }
         }
-        
-        
         this.setBox(); 
     } 
     
-    public boolean collides(GameObject other){
-        return this.getBox().intersects(other.getBox()); 
+    public boolean collides(GameObject object){
+        return this.getBox().intersects(object.getBox()); 
     }     
     public boolean isOnLevel(int level){ 
         return (this.y + this.height == level); 

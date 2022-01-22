@@ -5,11 +5,11 @@ public class Background extends GameObject {
     //------------------------------------------------------------------------------
     Background (String picName) {
         //super ( "G" , x , y , width , height );
-        super ( "B" , 0 , 0 , picName);
+        super ("B", 0, 0, picName);
     }
 
     public void draw (Graphics g) {
-        super.draw ( g );
+        super.draw(g);
     }
 
 }

@@ -4,7 +4,7 @@ public class Platform extends GameObject {
 
     //------------------------------------------------------------------------------
     Platform(int x, int y) {
-        super ( "G" , x , y , ".//images//platform.png");
+        super ("G", x, y, ".//images//platform.png");
     }
 
     public void draw(Graphics g) {
