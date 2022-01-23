@@ -5,17 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Further improvement 1/22 morning to combine menu with gamepanel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Background.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Const.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Door.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FinalProject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Game$GamePanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Game$MyKeyListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameObject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GreenGoo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Jumper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LoseWindow$ExitButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LoseWindow$RestartButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LoseWindow$StartButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LoseWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Menu$ButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Menu$ExitButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Menu$StartButtonListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Menu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MovingPlatform.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Platform.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/PlatformLayout.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/fireboy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/fireboy_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/greengoo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/platform.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/watergirl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/images/watergirl_small.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Jumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MovingPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MovingPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Platform.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +101,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.textmate.bundles" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -105,8 +133,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Game" />
-        <item itemvalue="Application.Menu" />
         <item itemvalue="Application.FinalProject" />
+        <item itemvalue="Application.Menu" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +274,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FinalProject$FinalProject.ic" NAME="FinalProject Coverage Results" MODIFIED="1642388929652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/FinalProject$Menu.ic" NAME="Menu Coverage Results" MODIFIED="1642874048552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/FinalProject$FinalProject.ic" NAME="FinalProject Coverage Results" MODIFIED="1642388929652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -22,6 +22,7 @@ public class Game{
     java.util.List<MovingPlatform> movingPlatformList;
 
     Background background;
+    GamePanel gamePanel;
 
 //------------------------------------------------------------------------------ 
     Game(JFrame gameFrame) {
@@ -66,6 +67,15 @@ public class Game{
         gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
+
+
+        gamePanel = new GamePanel();
+        gamePanel.addKeyListener(keyListener);
+        gameFrame.add(gamePanel);
+        gameFrame.setVisible(true);
+
+
+
     }
 
     public void SetupGameObjects() {
@@ -121,11 +131,6 @@ public class Game{
 //    main game loop 
     public void runGameLoop(){
 
-        GamePanel gamePanel;
-        gamePanel = new GamePanel();
-        gamePanel.addKeyListener(keyListener);
-        gameFrame.add(gamePanel);
-        gameFrame.setVisible(true);
 
         //while (true) {
         while (gameStatus.equals("playing")) {

@@ -4,10 +4,11 @@ public class FinalProject{
      
     public static void main(String [] args) throws Exception{ 
 
-        Menu gameMenu = new Menu();
-        gameMenu.startSignal = false;
 
-        //Game game = new Game(gameMenu.gameFrame);
+        Menu gameMenu = new Menu();
+        //JFrame gameFrame = new JFrame("Firegirl and Waterboy");
+        Game game = new Game(gameMenu.gameFrame);
+        game.setUpGamePlatform();
 
         while (!gameMenu.startSignal) {
             System.out.println(gameMenu.startSignal);
@@ -15,8 +16,7 @@ public class FinalProject{
 
         System.out.println("game is now started");
         JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-        //Game game = new Game(gameFrame);
-        Game game = new Game(gameMenu.gameFrame);
+        game = new Game(gameFrame);
         game.setUpGamePlatform();
         game.runGameLoop();
         while (game.gameActive ) {
@@ -24,11 +24,14 @@ public class FinalProject{
             if (game.gameStatus == "Lost") {
                 System.out.println("you lose");
                 gameMenu = new Menu();
+                game = new Game(gameMenu.gameFrame);
+                game.setUpGamePlatform();
                 gameMenu.startSignal = false;
                 while (!gameMenu.startSignal) {
                     System.out.println(gameMenu.startSignal);
                 }
-                game = new Game(gameMenu.gameFrame);
+                gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+                game = new Game(gameFrame);
                 game.setUpGamePlatform();
                 game.runGameLoop();
             }
