@@ -111,10 +111,7 @@ public class Jumper {
     
     public void moveY(int bottomLimit) {
         //when jumper is stuck on moving platform
-        if (this.isOnMovingPlatform && this.currentMovingPlatform.getMovingDirection().equals("Up")) {
-            this.y -= this.currentMovingPlatform.getVy();
-        }
-        else if (this.isOnMovingPlatform && this.currentMovingPlatform.getMovingDirection().equals("Down")) {
+        if (this.isOnMovingPlatform) {
             this.y += this.currentMovingPlatform.getVy();
         }
         else { //when jumper is not on a moving platform

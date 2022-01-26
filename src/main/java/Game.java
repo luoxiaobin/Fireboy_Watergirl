@@ -42,13 +42,6 @@ public class Game{
         doorList = new ArrayList<Door>();
         movingPlatformList = new ArrayList<MovingPlatform>();
 
-        //gameObjs = new GameObject[MAX_ROW_LENGTH];
-
-//        int jumperW = 20;
-//        int jumperH = 32;
-//        int jumperX = Const.WIDTH/2;
-//        int jumperY = Const.GROUND - jumperH;
-
         int jumperX = 50;
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
         firegirl = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
@@ -73,9 +66,6 @@ public class Game{
         gamePanel.addKeyListener(keyListener);
         gameFrame.add(gamePanel);
         gameFrame.setVisible(true);
-
-
-
     }
 
     public void SetupGameObjects() {
@@ -131,16 +121,11 @@ public class Game{
 //    main game loop 
     public void runGameLoop(){
 
-
         //while (true) {
         while (gameStatus.equals("playing")) {
             gameFrame.repaint(); 
             try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
 
-            for (MovingPlatform movingPlatform: movingPlatformList) {
-                movingPlatform.move();
-            }
-            
             firegirl.accelerate();
             firegirl.moveX();
             firegirl.moveY(Const.GROUND);
@@ -148,6 +133,10 @@ public class Game{
             waterboy.moveX();
             waterboy.moveY(Const.GROUND);
 
+            for (MovingPlatform movingPlatform: movingPlatformList) {
+                movingPlatform.move();
+            }
+            
             for (MovingPlatform movingPlatform: movingPlatformList) {
                 //if the jumper is moving down and collides with a moving platform
                 if (firegirl.getVy()>0 && firegirl.collides(movingPlatform)) {
@@ -169,7 +158,6 @@ public class Game{
                     waterboy.setY(movingPlatform.getY()-waterboy.getHeight());
                     waterboy.setOnMovingPlatform(movingPlatform);
                 }
-
             }
             
             for (Platform platform:platformList) {
@@ -213,7 +201,6 @@ public class Game{
                     waterboy.setVy (0);
                     System.out.println ("waterboy WIN!!!");
                 }
-
             }
 
             //if the object collides with any of the GreenGoo
@@ -224,16 +211,13 @@ public class Game{
                     firegirl.setVy (0);
                     System.out.println("You LOST!!!");
                     gameFrame.dispose();
-                    //new Menu();
                 }
                 if (waterboy.collides (greenGoo)) {
                     gameStatus = "Lost";
                     waterboy.setVx (0);
                     waterboy.setVy (0);
                     System.out.println("You LOST!!!");
-                    //game.dispose();
                       gameFrame.dispose();
-                    //new Menu();
                 }               
             }
 

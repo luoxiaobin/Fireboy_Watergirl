@@ -14,7 +14,7 @@ public class FinalProject{
             System.out.println(gameMenu.startSignal);
         }
 
-        System.out.println("game is now started");
+        System.out.println("level 1 is now starting");
         JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
         game = new Game(gameFrame);
         game.setUpGamePlatform();
@@ -22,7 +22,7 @@ public class FinalProject{
         while (game.gameActive ) {
             System.out.println(game.gameStatus);
             if (game.gameStatus == "Lost") {
-                System.out.println("you lose");
+                System.out.println("You lost");
                 gameMenu = new Menu();
                 game = new Game(gameMenu.gameFrame);
                 game.setUpGamePlatform();
@@ -30,7 +30,7 @@ public class FinalProject{
                 while (!gameMenu.startSignal) {
                     System.out.println(gameMenu.startSignal);
                 }
-                gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+                gameFrame = new JFrame("Game 'Firegirl and Waterboy'");
                 game = new Game(gameFrame);
                 game.setUpGamePlatform();
                 game.runGameLoop();
