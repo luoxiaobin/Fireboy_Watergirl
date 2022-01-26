@@ -1,0 +1,50 @@
+import javax.swing.*; 
+import java.awt.*; 
+import java.awt.event.*; 
+ 
+public class Menu extends JFrame{ 
+    boolean active = true; 
+     
+    Menu(){ 
+        super("Menu"); 
+        this.setSize(Const.WIDTH,Const.HEIGHT); 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        this.setResizable(false); 
+ 
+        JPanel menuPanel = new JPanel();   
+         
+        JButton playButton = new JButton("Play"); 
+        playButton.addActionListener(new PlayButtonListener(this));         
+        menuPanel.add(playButton); 
+         
+        JButton instructionsButton = new JButton("Instructions"); 
+        instructionsButton.addActionListener(new InstructionButtonListener(this)); 
+        menuPanel.add(instructionsButton); 
+         
+        this.add(menuPanel); 
+        this.setVisible(true); 
+    } 
+//------------------------------------------------------------------------------  
+    public class PlayButtonListener implements ActionListener{ 
+        JFrame frame; 
+        //This constructor ensures the button is linked to the current frame 
+        PlayButtonListener(JFrame frame){ 
+            this.frame = frame; 
+        } 
+        public void actionPerformed(ActionEvent event){ 
+            frame.dispose();             
+            active = false; 
+        } 
+    }     
+//------------------------------------------------------------------------------   
+    public class InstructionButtonListener implements ActionListener{ 
+        JFrame frame; 
+        //This constructor ensures the button is linked to the current frame 
+        InstructionButtonListener(JFrame frame){ 
+            this.frame = frame; 
+        } 
+        public void actionPerformed(ActionEvent event){ 
+            new Instructions(); 
+        } 
+    }          
+}

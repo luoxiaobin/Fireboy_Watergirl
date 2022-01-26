@@ -1,17 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 //class Menu extends JFrame{
-class Menu {
+public class Menu extends JFrame{
+    boolean active = true;
     JFrame gameFrame;
 //    JPanel gamePanel;
 
     JMenuBar gameMenuBar;
     JMenu gameSubmenu;
-    JMenuItem gameMenuItemStart, gameMenuItemExit;
+    JMenuItem gameMenuItemStart, gameMenuItemExit, gameMenuItemInstructions;
 
-    boolean startSignal=false;
+    boolean startSignal = false;
+    boolean instructionSignal = false;
 
     Menu() {
         gameFrame = new JFrame("Firegirl and Waterboy");
@@ -23,7 +24,7 @@ class Menu {
         gameMenuBar = new JMenuBar();
 
         //Build the first menu.
-        gameSubmenu = new JMenu("Game");
+        gameSubmenu = new JMenu("Menu Bar");
         gameSubmenu.setMnemonic(KeyEvent.VK_G);
         gameSubmenu.getAccessibleContext().setAccessibleDescription(
                 "The only menu in this program that has menu items");
@@ -44,18 +45,34 @@ class Menu {
                 System.exit(0);
             }
         });
+        
+        gameMenuItemInstructions = new JMenuItem("Instructions",  KeyEvent.VK_V);
+        gameMenuItemInstructions.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                instructionSignal = true;
+            }
+        });
+        
         gameSubmenu.add(gameMenuItemExit);
         gameFrame.setJMenuBar(gameMenuBar);
+        gameSubmenu.add(gameMenuItemInstructions);
 
         gameFrame.setVisible(true);
     }
 
-
-    public static void main( String[] args ) {
+//    public class InstructionsButtonListener implements ActionListener {
+//        JFrame frame;
+//        InstructionButtonListener(JFrame frame) {
+//            this.frame = frame;
+//        }
+//        public void actionPerformed(ActionEvent event) {
+//            new Instructions();
+//        }
+//    }
+    
+    public static void main(String[] args) {
         Menu gameMenu = new Menu();
-
         JFrame gameFrame = new JFrame("Firegirl and Waterboy");
-
         Game game = new Game(gameFrame, 1);
         game.setUpGamePlatform();
         game.runGameLoop();

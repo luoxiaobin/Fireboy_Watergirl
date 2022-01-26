@@ -23,6 +23,8 @@ public class Game{
 
     Background background;
     GameOverScreen gameOverScreen;
+    LevelCompletedScreen levelCompletedScreen;
+    InstructionScreen instructionScreen;
     GamePanel gamePanel;
 
 //------------------------------------------------------------------------------ 
@@ -50,16 +52,16 @@ public class Game{
         jumperX = 250;
         jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
 
-        waterboy = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
+        waterboy = new Jumper(jumperX, jumperY, ".//images//fireboy_small.png");
 
         if (level == 1) {
-            SetupGameObjects("./LevelOneLayout.cfg");
+            SetupGameObjects("./src/main/java/LevelOneLayout.cfg");
         }
         else if (level == 2) {
-            SetupGameObjects("./LevelTwoLayout.cfg");
+            SetupGameObjects("./src/main/java/LevelTwoLayout.cfg");
         }
         else if (level == 3) {
-            SetupGameObjects("./LevelThreeLayout.cfg");
+            SetupGameObjects("./src/main/java/LevelThreeLayout.cfg");
         }
     }
 
@@ -77,12 +79,20 @@ public class Game{
     }
     
     public void showGameOverScreen() {
-    
         String gameOverPic = "images/gameover.png";
         gameOverScreen = new GameOverScreen(gameOverPic);
-
+    }
+    
+    public void showLevelCompletedScreen() {
+        String levelCompletedPic = "images/levelCompleted.png";
+        levelCompletedScreen = new LevelCompletedScreen(levelCompletedPic);
     }
 
+     public void showInstructionScreen() {
+        String instructionPic = "images/instructions.png";
+        instructionScreen = new InstructionScreen(instructionPic);
+    }
+    
     public void SetupGameObjects(String platformLayout) {
         try {
             java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
@@ -116,8 +126,7 @@ public class Game{
                         greenGooList.add(new GreenGoo(posX, posY));
                         break;
                     case "D":
-                        String doorName = record.get(3).trim();
-                        doorList.add(new Door(posX, posY, doorName));
+                        doorList.add(new Door(posX, posY));
                         break;
                     case "M":
                         int movingDistance = Integer.parseInt(record.get(3).trim());
@@ -310,8 +319,6 @@ public class Game{
             if (key != KeyEvent.VK_D){
                 waterboy.setVx(0);
             }
-            
-            
         }
         public void keyTyped(KeyEvent e){
         }            
@@ -329,23 +336,26 @@ public class Game{
             super.paintComponent(g); //required
             background.draw(g);
             
-            if (gameOverScreen != null) gameOverScreen.draw(g);
-
-            for (Platform platform:platformList)
+            for (Platform platform:platformList) {
                 platform.draw(g);
-
-            for (GreenGoo greenGoo:greenGooList)
+            }
+            for (GreenGoo greenGoo:greenGooList) {
                 greenGoo.draw(g);
-
-            for (Door door:doorList)
+            }
+            for (Door door:doorList) {
                 door.draw(g);
-
-            for (MovingPlatform movingPlatform: movingPlatformList)
+            }
+            for (MovingPlatform movingPlatform: movingPlatformList) {
                 movingPlatform.draw(g);
-      
+            }
+            if (gameOverScreen != null) {
+                gameOverScreen.draw(g);
+            }
+            if (levelCompletedScreen != null)  {
+                levelCompletedScreen.draw(g);
+            }
             firegirl.draw(g); 
             waterboy.draw(g);
-      
         }
     }
 
