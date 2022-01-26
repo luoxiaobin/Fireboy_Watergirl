@@ -22,6 +22,7 @@ public class Game{
     java.util.List<MovingPlatform> movingPlatformList;
 
     Background background;
+    GameOverScreen gameOverScreen;
     GamePanel gamePanel;
 
 //------------------------------------------------------------------------------ 
@@ -74,12 +75,19 @@ public class Game{
         gameFrame.add(gamePanel);
         gameFrame.setVisible(true);
     }
+    
+    public void showGameOverScreen() {
+    
+        String gameOverPic = "images/gameover.png";
+        gameOverScreen = new GameOverScreen(gameOverPic);
+
+    }
 
     public void SetupGameObjects(String platformLayout) {
         try {
             java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
 
-            //System.out.println(System.getProperty("user.dir"));
+            System.out.println(System.getProperty("user.dir"));
             Scanner scanner = new Scanner(new File(platformLayout));
             while (scanner.hasNextLine()) {
                 String gameObjectRecordString = scanner.nextLine();
@@ -193,8 +201,9 @@ public class Game{
 
             //if the object collides with the door
             for (Door door:doorList) {
-                if (door.getName() == "red" && firegirl.collides (door) && door.getName() == "blue" && waterboy.collides (door)) {
-                    gameStatus = "Win";
+                //if (door.getName() == "red" && firegirl.collides (door) && door.getName() == "blue" && waterboy.collides (door)) {
+                if (firegirl.collides (door) && waterboy.collides (door)) {
+                    gameStatus = "Won";
                     firegirl.setVx (0);
                     firegirl.setVy (0);
                     waterboy.setVx (0);
@@ -319,8 +328,8 @@ public class Game{
         public void paintComponent(Graphics g){  
             super.paintComponent(g); //required
             background.draw(g);
-            firegirl.draw(g); 
-            waterboy.draw(g);
+            
+            if (gameOverScreen != null) gameOverScreen.draw(g);
 
             for (Platform platform:platformList)
                 platform.draw(g);
@@ -333,6 +342,10 @@ public class Game{
 
             for (MovingPlatform movingPlatform: movingPlatformList)
                 movingPlatform.draw(g);
+      
+            firegirl.draw(g); 
+            waterboy.draw(g);
+      
         }
     }
 

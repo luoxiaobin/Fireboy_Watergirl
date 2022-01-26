@@ -12,7 +12,7 @@ public class FinalProject{
         game.setUpGamePlatform();
 
         while (!gameMenu.startSignal) {
-            System.out.println(gameMenu.startSignal);
+            System.out.print(gameMenu.startSignal);
         }
 
         System.out.println("level 1 is now starting");
@@ -27,6 +27,7 @@ public class FinalProject{
                 gameMenu = new Menu();
                 game = new Game(gameMenu.gameFrame, level);
                 game.setUpGamePlatform();
+                game.showGameOverScreen();
                 gameMenu.startSignal = false;
                 while (!gameMenu.startSignal) {
                     System.out.println(gameMenu.startSignal);
@@ -41,6 +42,7 @@ public class FinalProject{
                 level = level + 1;
                 game = new Game(gameMenu.gameFrame, level);
                 game.setUpGamePlatform();
+                game.showGameOverScreen();
                 gameMenu.startSignal = false;
                 while (!gameMenu.startSignal) {
                     System.out.println(gameMenu.startSignal);
