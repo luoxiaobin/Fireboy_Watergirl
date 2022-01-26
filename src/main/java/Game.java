@@ -25,7 +25,7 @@ public class Game{
     GamePanel gamePanel;
 
 //------------------------------------------------------------------------------ 
-    Game(JFrame gameFrame) {
+    Game(JFrame gameFrame, int level) {
 
         //gameFrame = new JFrame("Game 'Firegirl and waterboy'");
 
@@ -51,7 +51,15 @@ public class Game{
 
         waterboy = new Jumper(jumperX, jumperY, ".//images//watergirl_small.png");
 
-        SetupGameObjects();
+        if (level == 1) {
+            SetupGameObjects("./LevelOneLayout.cfg");
+        }
+        else if (level == 2) {
+            SetupGameObjects("./LevelTwoLayout.cfg");
+        }
+        else if (level == 3) {
+            SetupGameObjects("./LevelThreeLayout.cfg");
+        }
     }
 
 //------------------------------------------------------------------------------
@@ -61,19 +69,18 @@ public class Game{
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
 
-
         gamePanel = new GamePanel();
         gamePanel.addKeyListener(keyListener);
         gameFrame.add(gamePanel);
         gameFrame.setVisible(true);
     }
 
-    public void SetupGameObjects() {
+    public void SetupGameObjects(String platformLayout) {
         try {
             java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
 
-            System.out.println(System.getProperty("user.dir"));
-            Scanner scanner = new Scanner(new File("./PlatformLayout.cfg"));
+            //System.out.println(System.getProperty("user.dir"));
+            Scanner scanner = new Scanner(new File(platformLayout));
             while (scanner.hasNextLine()) {
                 String gameObjectRecordString = scanner.nextLine();
 
@@ -186,39 +193,29 @@ public class Game{
 
             //if the object collides with the door
             for (Door door:doorList) {
-                if (door.getName() == "red" && firegirl.collides (door)) {
-                    gameStatus = "Won";
+                if (door.getName() == "red" && firegirl.collides (door) && door.getName() == "blue" && waterboy.collides (door)) {
+                    gameStatus = "Win";
                     firegirl.setVx (0);
                     firegirl.setVy (0);
-                    System.out.println ("firegirl WIN!!!");
-//                    gameFrame.dispose();
-//                    new Menu();
-                }
-                
-                if (door.getName() == "blue" && waterboy.collides (door)) {
-                    gameStatus = "Won";
                     waterboy.setVx (0);
                     waterboy.setVy (0);
-                    System.out.println ("waterboy WIN!!!");
+                    System.out.println ("Great job!");
+//                    gameFrame.dispose();
+//                    new Menu();
                 }
             }
 
             //if the object collides with any of the GreenGoo
             for (GreenGoo greenGoo:greenGooList) {
-                if (firegirl.collides (greenGoo)) {
+                if (firegirl.collides (greenGoo) || waterboy.collides (greenGoo)) {
                     gameStatus = "Lost";
                     firegirl.setVx (0);
                     firegirl.setVy (0);
-                    System.out.println("You LOST!!!");
-                    gameFrame.dispose();
-                }
-                if (waterboy.collides (greenGoo)) {
-                    gameStatus = "Lost";
                     waterboy.setVx (0);
                     waterboy.setVy (0);
-                    System.out.println("You LOST!!!");
-                      gameFrame.dispose();
-                }               
+                    System.out.println("Fail!");
+                    gameFrame.dispose();
+                }
             }
 
             //if jumper hits left edge of the screen, it should bounce back
@@ -341,7 +338,7 @@ public class Game{
 
     public static void main(String [] args) throws Exception {
         JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-        Game game = new Game(gameFrame);
+        Game game = new Game(gameFrame, 1);
         game.setUpGamePlatform();
         game.runGameLoop();
     }

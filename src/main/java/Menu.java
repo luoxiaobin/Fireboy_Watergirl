@@ -56,7 +56,7 @@ class Menu {
 
         JFrame gameFrame = new JFrame("Firegirl and Waterboy");
 
-        Game game = new Game(gameFrame);
+        Game game = new Game(gameFrame, 1);
         game.setUpGamePlatform();
         game.runGameLoop();
 
