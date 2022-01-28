@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class FinalProject{
      
-    public static void main(String [] args) throws Exception{ 
+    public static void main(String [] args) {
 
         int level = 1;
 

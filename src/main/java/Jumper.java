@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Jumper {
-    private final int width;
     private final int height;
     private final Rectangle box;
     private int x;
@@ -28,11 +27,11 @@ public class Jumper {
         try {
             this.picture = ImageIO.read(new File (picName));
         }
-        catch (IOException ex){};
+        catch (IOException ex){}
 
-        this.width = this.picture.getWidth();
+        int width = this.picture.getWidth ( );
         this.height = this.picture.getHeight();
-        this.box = new Rectangle(x, y, this.width, this.height);
+        this.box = new Rectangle(x, y, width , this.height);
     }
 
     //------------------------------------------------------------------------------

@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -9,25 +7,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game{ 
-    JFrame gameFrame; 
+    final JFrame gameFrame;
 
-    MyKeyListener keyListener;  
+    final MyKeyListener keyListener;
     //game objects 
-    Jumper firegirl; 
-    Jumper waterboy;
+    final Jumper firegirl;
+    final Jumper waterboy;
     String gameStatus;
-    public boolean gameActive;
+    public final boolean gameActive;
     
-    java.util.List<Platform> platformList;
-    java.util.List<GreenGoo> greenGooList;
-    java.util.List<Door> doorList;
-    java.util.List<MovingPlatform> movingPlatformList;
+    final java.util.List<Platform> platformList;
+    final java.util.List<GreenGoo> greenGooList;
+    final java.util.List<Door> doorList;
+    final java.util.List<MovingPlatform> movingPlatformList;
 
-    Background background;
+    final Background background;
     GameOverScreen gameOverScreen;
     LevelCompletedScreen levelCompletedScreen;
     GamePanel gamePanel;
-
 
     JMenuBar gameMenuBar;
     JMenu gameSubmenu;
@@ -38,8 +35,6 @@ public class Game{
 //------------------------------------------------------------------------------ 
     Game() {
 
-        //gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-
         keyListener = new MyKeyListener();
         gameStatus = "playing";
         gameActive = true;
@@ -47,10 +42,10 @@ public class Game{
         String bckgPic = "images/background.png";
         background = new Background(bckgPic);
 
-        platformList = new ArrayList<Platform>();
-        greenGooList = new ArrayList<GreenGoo>();
-        doorList = new ArrayList<Door>();
-        movingPlatformList = new ArrayList<MovingPlatform>();
+        platformList = new ArrayList<> ( );
+        greenGooList = new ArrayList<> ( );
+        doorList = new ArrayList<> ( );
+        movingPlatformList = new ArrayList<> ( );
 
         gameFrame = new JFrame ( "Firegirl and Waterboy" );
         gameFrame.setSize (Const.WIDTH,Const.HEIGHT);
@@ -58,8 +53,6 @@ public class Game{
         gameFrame.setResizable(false);
 
         gameSetupMenu();
-        //super.setVisible(true);
-        //gameFrame.setVisible(true);
 
         int jumperX = 50;
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
@@ -108,35 +101,28 @@ public class Game{
         //a group of JMenuItems
         gameMenuItemStart = new JMenuItem("Start", KeyEvent.VK_S );
         gameSubmenu.add(gameMenuItemStart);
-        gameMenuItemStart.addActionListener(new ActionListener () {
-            public void actionPerformed(ActionEvent ev) {
-                startSignal = true;
-                gameSetMenuDisabled ();
-            }
-        });
+        gameMenuItemStart.addActionListener( ev -> {
+            startSignal = true;
+            gameSetMenuDisabled ();
+        } );
 
         gameMenuItemInstructions = new JMenuItem("Instructions",  KeyEvent.VK_V);
-        JFrame finalGameFrame = gameFrame;
-        gameMenuItemInstructions.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
-                JOptionPane.showMessageDialog(null, "Firegirl uses the arrow keys to move, waterboy uses the 'a,w,d' keys to move. \nTo complete a level, they both must reach the door. If either touches the \ngreen goo, the level must be restarted. \n\nGOOD LUCK!!!!", "Instruction",JOptionPane.INFORMATION_MESSAGE,icon);
-            }
-        });
+
+        gameMenuItemInstructions.addActionListener( ev -> {
+            final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
+            JOptionPane.showMessageDialog(null, "Firegirl uses the arrow keys to move, waterboy uses the 'a,w,d' keys to move. \nTo complete a level, they both must reach the door. If either touches the \ngreen goo, the level must be restarted. \n\nGOOD LUCK!!!!", "Instruction",JOptionPane.INFORMATION_MESSAGE,icon);
+        } );
 
         gameMenuItemExit = new JMenuItem("Exit", KeyEvent.VK_X );
-        gameMenuItemExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
-                JOptionPane.showMessageDialog(null, "See you next time!", "Exit",JOptionPane.INFORMATION_MESSAGE,icon);
-                System.exit(0);
-            }
-        });
+        gameMenuItemExit.addActionListener( ev -> {
+            final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
+            JOptionPane.showMessageDialog(null, "See you next time!", "Exit",JOptionPane.INFORMATION_MESSAGE,icon);
+            System.exit(0);
+        } );
 
         gameSubmenu.add(gameMenuItemInstructions);
         gameSubmenu.add(gameMenuItemExit);
         gameFrame.setJMenuBar (gameMenuBar);
-
     }
 
 
@@ -181,26 +167,24 @@ public class Game{
                 gameObjectRecords.add(gameObjectRecordValues);
             }
 
-            for (int row = 0; row < gameObjectRecords.size(); row++) {
-                java.util.List<String> record = gameObjectRecords.get(row);
+            for (java.util.List<String> record : gameObjectRecords) {
+                String gameObjectType = record.get ( 0 ).toUpperCase ( );
+                int posX = Integer.parseInt ( record.get ( 1 ).trim ( ) );
+                int posY = Integer.parseInt ( record.get ( 2 ).trim ( ) );
 
-                String gameObjectType = record.get(0).toUpperCase();
-                int posX = Integer.parseInt(record.get(1).trim());
-                int posY = Integer.parseInt(record.get(2).trim());
-
-                switch (gameObjectType){
+                switch (gameObjectType) {
                     case "P":
-                        platformList.add(new Platform(posX, posY));
+                        platformList.add ( new Platform ( posX , posY ) );
                         break;
                     case "G":
-                        greenGooList.add(new GreenGoo(posX, posY));
+                        greenGooList.add ( new GreenGoo ( posX , posY ) );
                         break;
                     case "D":
-                        doorList.add(new Door(posX, posY));
+                        doorList.add ( new Door ( posX , posY ) );
                         break;
                     case "M":
-                        int movingDistance = Integer.parseInt(record.get(3).trim());
-                        movingPlatformList.add(new MovingPlatform(posX, posY, movingDistance));
+                        int movingDistance = Integer.parseInt ( record.get ( 3 ).trim ( ) );
+                        movingPlatformList.add ( new MovingPlatform ( posX , posY , movingDistance ) );
                         break;
                 }
             }
@@ -218,7 +202,7 @@ public class Game{
         //while (true) {
         while (gameStatus.equals("playing")) {
             gameFrame.repaint(); 
-            try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception e){}
+            try {Thread.sleep(Const.FRAME_PERIOD);} catch(Exception ignored){}
 
             firegirl.accelerate();
             firegirl.moveX();
@@ -280,7 +264,6 @@ public class Game{
 
             //if the object collides with the door
             for (Door door:doorList) {
-                //if (door.getName() == "red" && firegirl.collides (door) && door.getName() == "blue" && waterboy.collides (door)) {
                 if (firegirl.collides (door) && waterboy.collides (door)) {
                     gameStatus = "Won";
                     firegirl.setVx (0);
@@ -288,8 +271,6 @@ public class Game{
                     waterboy.setVx (0);
                     waterboy.setVy (0);
                     System.out.println ("Great job!");
-//                    gameFrame.dispose();
-//                    new Menu();
                 }
             }
 
@@ -349,12 +330,6 @@ public class Game{
                 System.out.println("right is pressed");
                 firegirl.unsetOnMovingPlatform();
             } 
-//            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0)) {
-//                    firegirl.setVy(Const.JUMP_SPEED);
-//            }
-            
-// for firegirl,needs to change
-                      //int key = e.getKeyCode(); 
             if ((key == KeyEvent.VK_W) && (waterboy.getVy() == 0 || waterboy.getOnMovingPlatform())) {
                 waterboy.setVy(Const.JUMP_SPEED);
                 System.out.println("up is pressed");
@@ -370,10 +345,7 @@ public class Game{
                 System.out.println("right is pressed");
                 waterboy.unsetOnMovingPlatform();
             } 
-//            if ((key == KeyEvent.VK_UP) && (firegirl.getVy() == 0)) {
-//                    firegirl.setVy(Const.JUMP_SPEED);
-//            }
-            
+
         } 
         public void keyReleased(KeyEvent e){
             int key = e.getKeyCode();
@@ -429,8 +401,7 @@ public class Game{
         }
     }
 
-    public static void main(String [] args) throws Exception {
-        //JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+    public static void main(String [] args) {
         Game game = new Game();
         game.setGameLevel ( 1 );
         game.gameSetMenuDisabled ();
