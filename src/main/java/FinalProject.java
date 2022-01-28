@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+
 
 public class FinalProject{
      
@@ -34,6 +36,7 @@ public class FinalProject{
                 }
                 game.setGameLevel ( level );
                 game.gameSetMenuDisabled ();
+                game.gameOverScreen = null;
                 game.runGameLoop();
             }
             else if (game.gameStatus == "Won") {
@@ -59,6 +62,5 @@ public class FinalProject{
                 }
             }
         }
-        //this is a test
-    }  
+    }
 }
