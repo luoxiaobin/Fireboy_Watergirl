@@ -1,10 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 //class Menu extends JFrame{
 public class Menu extends JFrame{
     boolean active = true;
-    JFrame gameFrame;
+    //JFrame gameFrame;
 //    JPanel gamePanel;
 
     JMenuBar gameMenuBar;
@@ -15,10 +16,14 @@ public class Menu extends JFrame{
     boolean instructionSignal = false;
 
     Menu() {
-        gameFrame = new JFrame("Firegirl and Waterboy");
-        gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
-        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameFrame.setResizable(false);
+        super.setTitle ( "Firegirl and Waterboy" );
+        super.setSize (Const.WIDTH,Const.HEIGHT);
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setResizable(false);
+        //gameFrame = new JFrame("Firegirl and Waterboy");
+        //gameFrame.setSize(Const.WIDTH,Const.HEIGHT);
+        //gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //gameFrame.setResizable(false);
 
         //Create the menu bar.
         gameMenuBar = new JMenuBar();
@@ -49,15 +54,30 @@ public class Menu extends JFrame{
         gameMenuItemInstructions = new JMenuItem("Instructions",  KeyEvent.VK_V);
         gameMenuItemInstructions.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                instructionSignal = true;
+                //instructionSignal = true;
+                //JOptionPane.showMessageDialog(gameFrame, "Instructions!!!");
+
+                JPanel panel = new JPanel();
+                panel.setSize(500,640);
+                panel.setBackground(Color.CYAN);
+                ImageIcon icon = new ImageIcon("images/instructions.png");
+                JLabel label = new JLabel();
+                label.setIcon(icon);
+                panel.add(label);
+                Menu.super.getContentPane ().add(panel);
+                Menu.super.setVisible(true);
+                //gameFrame.getContentPane().add(panel);
+                //gameFrame.setVisible(true);
             }
         });
         
         gameSubmenu.add(gameMenuItemExit);
-        gameFrame.setJMenuBar(gameMenuBar);
+        super.setJMenuBar (gameMenuBar);
+        //gameFrame.setJMenuBar(gameMenuBar);
         gameSubmenu.add(gameMenuItemInstructions);
 
-        gameFrame.setVisible(true);
+        super.setVisible(true);
+        //gameFrame.setVisible(true);
     }
 
 //    public class InstructionsButtonListener implements ActionListener {
@@ -69,11 +89,11 @@ public class Menu extends JFrame{
 //            new Instructions();
 //        }
 //    }
-    
+
     public static void main(String[] args) {
         Menu gameMenu = new Menu();
-        JFrame gameFrame = new JFrame("Firegirl and Waterboy");
-        Game game = new Game(gameFrame, 1);
+        //JFrame gameFrame = new JFrame("Firegirl and Waterboy");
+        Game game = new Game();
         game.setUpGamePlatform();
         game.runGameLoop();
 

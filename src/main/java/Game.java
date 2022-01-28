@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -24,18 +26,23 @@ public class Game{
     Background background;
     GameOverScreen gameOverScreen;
     LevelCompletedScreen levelCompletedScreen;
-    InstructionScreen instructionScreen;
     GamePanel gamePanel;
 
+
+    JMenuBar gameMenuBar;
+    JMenu gameSubmenu;
+    JMenuItem gameMenuItemStart, gameMenuItemExit, gameMenuItemInstructions;
+
+    boolean startSignal = false;
+
 //------------------------------------------------------------------------------ 
-    Game(JFrame gameFrame, int level) {
+    Game() {
 
         //gameFrame = new JFrame("Game 'Firegirl and waterboy'");
 
-        this.gameFrame = gameFrame;
         keyListener = new MyKeyListener();
-        this.gameStatus = "playing";
-        this.gameActive = true;
+        gameStatus = "playing";
+        gameActive = true;
 
         String bckgPic = "images/background.png";
         background = new Background(bckgPic);
@@ -44,6 +51,15 @@ public class Game{
         greenGooList = new ArrayList<GreenGoo>();
         doorList = new ArrayList<Door>();
         movingPlatformList = new ArrayList<MovingPlatform>();
+
+        gameFrame = new JFrame ( "Firegirl and Waterboy" );
+        gameFrame.setSize (Const.WIDTH,Const.HEIGHT);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setResizable(false);
+
+        gameSetupMenu();
+        //super.setVisible(true);
+        //gameFrame.setVisible(true);
 
         int jumperX = 50;
         int jumperY = 468; // this is calculated as platform y axis (500) - height of jumper (32)
@@ -54,16 +70,75 @@ public class Game{
 
         waterboy = new Jumper(jumperX, jumperY, ".//images//fireboy_small.png");
 
+    }
+
+    public void setGameLevel(int level){
+
+        levelCompletedScreen = null;
+
         if (level == 1) {
-            SetupGameObjects("./src/main/java/LevelOneLayout.cfg");
+            SetupGameObjects("./LevelOneLayout.cfg");
         }
         else if (level == 2) {
-            SetupGameObjects("./src/main/java/LevelTwoLayout.cfg");
+            SetupGameObjects("./LevelTwoLayout.cfg");
         }
         else if (level == 3) {
-            SetupGameObjects("./src/main/java/LevelThreeLayout.cfg");
+            SetupGameObjects("./LevelThreeLayout.cfg");
         }
     }
+
+    public void gameSetMenuDisabled(){
+        gameMenuBar.setVisible ( false);
+    }
+
+    public void gameSetMenuEnabled(){
+        gameMenuBar.setVisible ( true);
+    }
+
+    public void gameSetupMenu(){
+        //Create the menu bar.
+        gameMenuBar = new JMenuBar();
+        //Build the first menu.
+        gameSubmenu = new JMenu("Menu Bar");
+        gameSubmenu.setMnemonic(KeyEvent.VK_G);
+        gameSubmenu.getAccessibleContext().setAccessibleDescription(
+                "The only menu in this program that has menu items");
+        gameMenuBar.add(gameSubmenu);
+
+        //a group of JMenuItems
+        gameMenuItemStart = new JMenuItem("Start", KeyEvent.VK_S );
+        gameSubmenu.add(gameMenuItemStart);
+        gameMenuItemStart.addActionListener(new ActionListener () {
+            public void actionPerformed(ActionEvent ev) {
+                startSignal = true;
+                gameSetMenuDisabled ();
+            }
+        });
+
+        gameMenuItemInstructions = new JMenuItem("Instructions",  KeyEvent.VK_V);
+        JFrame finalGameFrame = gameFrame;
+        gameMenuItemInstructions.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
+                JOptionPane.showMessageDialog(null, "Firegirl uses the arrow keys to move, waterboy uses the 'a,w,d' keys to move. \nTo complete a level, they both must reach the door. If either touches the \ngreen goo, the level must be restarted. \n\nGOOD LUCK!!!!", "Instruction",JOptionPane.INFORMATION_MESSAGE,icon);
+            }
+        });
+
+        gameMenuItemExit = new JMenuItem("Exit", KeyEvent.VK_X );
+        gameMenuItemExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
+                JOptionPane.showMessageDialog(null, "See you next time!", "Exit",JOptionPane.INFORMATION_MESSAGE,icon);
+                System.exit(0);
+            }
+        });
+
+        gameSubmenu.add(gameMenuItemInstructions);
+        gameSubmenu.add(gameMenuItemExit);
+        gameFrame.setJMenuBar (gameMenuBar);
+
+    }
+
 
 //------------------------------------------------------------------------------
 //set up the game platform 
@@ -88,11 +163,6 @@ public class Game{
         levelCompletedScreen = new LevelCompletedScreen(levelCompletedPic);
     }
 
-     public void showInstructionScreen() {
-        String instructionPic = "images/instructions.png";
-        instructionScreen = new InstructionScreen(instructionPic);
-    }
-    
     public void SetupGameObjects(String platformLayout) {
         try {
             java.util.List<java.util.List<String>> gameObjectRecords = new ArrayList<>();
@@ -360,8 +430,10 @@ public class Game{
     }
 
     public static void main(String [] args) throws Exception {
-        JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-        Game game = new Game(gameFrame, 1);
+        //JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
+        Game game = new Game();
+        game.setGameLevel ( 1 );
+        game.gameSetMenuDisabled ();
         game.setUpGamePlatform();
         game.runGameLoop();
     }

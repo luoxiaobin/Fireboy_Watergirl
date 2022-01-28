@@ -6,51 +6,57 @@ public class FinalProject{
 
         int level = 1;
 
-        Menu gameMenu = new Menu();
-        //JFrame gameFrame = new JFrame("Firegirl and Waterboy");
-        Game game = new Game(gameMenu.gameFrame, level);
+        Game game = new Game();
+        game.setGameLevel ( level );
+
         game.setUpGamePlatform();
 
-        while (!gameMenu.startSignal) {
-            System.out.print(gameMenu.startSignal);
+        while (!game.startSignal) {
+            System.out.print(game.startSignal);
         }
 
         System.out.println("level 1 is now starting");
-        JFrame gameFrame = new JFrame("Game 'Firegirl and waterboy'");
-        game = new Game(gameFrame, level);
-        game.setUpGamePlatform();
+        game.gameSetMenuDisabled ();
         game.runGameLoop();
         while (game.gameActive ) {
             System.out.println(game.gameStatus);
             if (game.gameStatus == "Lost") {
                 System.out.println("You lost");
-                gameMenu = new Menu();
-                game = new Game(gameMenu.gameFrame, level);
+                game.gameFrame.dispose ();
+                game = new Game();
+                game.setGameLevel ( level );
                 game.setUpGamePlatform();
                 game.showGameOverScreen();
-                gameMenu.startSignal = false;
-                while (!gameMenu.startSignal) {
-                    System.out.println(gameMenu.startSignal);
+                game.gameSetMenuEnabled ();
+                game.startSignal = false;
+                while (!game.startSignal) {
+                    System.out.println(game.startSignal);
                 }
-                gameFrame = new JFrame("Game 'Firegirl and Waterboy'");
-                game = new Game(gameFrame, level);
-                game.setUpGamePlatform();
+                game.setGameLevel ( level );
+                game.gameSetMenuDisabled ();
                 game.runGameLoop();
             }
             else if (game.gameStatus == "Won") {
-                System.out.println("You won");
-                level = level + 1;
-                game = new Game(gameMenu.gameFrame, level);
-                game.setUpGamePlatform();
-                game.showGameOverScreen();
-                gameMenu.startSignal = false;
-                while (!gameMenu.startSignal) {
-                    System.out.println(gameMenu.startSignal);
+                if (level >= 3) {
+                    game.showLevelCompletedScreen();
+                    game.gameSetMenuDisabled ();
                 }
-                gameFrame = new JFrame("Game 'Firegirl and Waterboy'");
-                game = new Game(gameFrame, level);
-                game.setUpGamePlatform();
-                game.runGameLoop();
+                else {
+                    System.out.println ( "You won" );
+                    game.gameFrame.dispose ( );
+                    game = new Game ( );
+                    level = level + 1;
+                    game.setGameLevel ( level );
+                    game.setUpGamePlatform ( );
+                    game.showLevelCompletedScreen ( );
+                    game.startSignal = false;
+                    while (! game.startSignal) {
+                        System.out.println ( game.startSignal );
+                    }
+                    game.setGameLevel ( level );
+                    game.gameSetMenuDisabled ( );
+                    game.runGameLoop ( );
+                }
             }
         }
         //this is a test
