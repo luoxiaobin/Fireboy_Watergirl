@@ -4,45 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Final change before giving to Ivy 01/18 9:32pm">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Background.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Const.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Door.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game$GamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game$MyKeyListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GreenGoo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Jumper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LevelOneLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/LevelOneLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LevelThreeLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/LevelThreeLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LevelTwoLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/LevelTwoLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoseWindow$ExitButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoseWindow$RestartButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoseWindow$StartButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoseWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$ButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$ExitButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu$StartButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MovingPlatform.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Platform.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/images/instructions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$MyKeyListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Jumper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Jumper.class" afterDir="false" />
-    </list>
+    <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="New repo - branched out from Ivy's original FinalProject repo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642916869939</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="New repo - branched out from Ivy's original FinalProject repo">
+      <created>1643344211580</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643344211580</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -265,7 +234,8 @@
     <MESSAGE value="Further improvement 0910pm 1/18" />
     <MESSAGE value="Further improvement 1/22 morning to combine menu with gamepanel" />
     <MESSAGE value="1/22 night fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="1/22 night fixes" />
+    <MESSAGE value="New repo - branched out from Ivy's original FinalProject repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="New repo - branched out from Ivy's original FinalProject repo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
