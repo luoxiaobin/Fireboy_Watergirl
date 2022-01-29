@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b40f2cb8-c086-4f9e-89f2-926a6fbfe21a" name="Changes" comment="Code clean up">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LevelOneLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/LevelOneLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LevelTwoLayout.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/LevelTwoLayout.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FinalProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FinalProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FinalProject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FinalProject.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -82,15 +83,19 @@
   </component>
   <component name="RunManager" selected="Application.FinalProject">
     <configuration name="FinalProject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="FinalProject" />
-      <module name="FinalProject" />
+      <module name="Firegirl_Waterboy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Game" />
-      <module name="FinalProject" />
+      <module name="Firegirl_Waterboy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

@@ -47,7 +47,7 @@ public class Game{
         doorList = new ArrayList<> ( );
         movingPlatformList = new ArrayList<> ( );
 
-        gameFrame = new JFrame ( "Firegirl and Waterboy" );
+        gameFrame = new JFrame ( "Fireboy and Watergirl" );
         gameFrame.setSize (Const.WIDTH,Const.HEIGHT);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
