@@ -109,13 +109,13 @@ public class Game{
         gameMenuItemInstructions = new JMenuItem("Instructions",  KeyEvent.VK_V);
 
         gameMenuItemInstructions.addActionListener( ev -> {
-            final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
-            JOptionPane.showMessageDialog(null, "Firegirl uses the arrow keys to move, waterboy uses the 'a,w,d' keys to move. \nTo complete a level, they both must reach the door. If either touches the \ngreen goo, the level must be restarted. \n\nGOOD LUCK!!!!", "Instruction",JOptionPane.INFORMATION_MESSAGE,icon);
+            final ImageIcon icon = new ImageIcon("./images/watergirl_small.png");
+            JOptionPane.showMessageDialog(null, "Watergirl uses the arrow keys to move, fireboy uses the 'a,w,d' keys to move. \nTo complete a level, they both must reach the door. If either touches the \ngreen goo, the level must be restarted. \n\nGOOD LUCK!!!!", "Instruction",JOptionPane.INFORMATION_MESSAGE,icon);
         } );
 
         gameMenuItemExit = new JMenuItem("Exit", KeyEvent.VK_X );
         gameMenuItemExit.addActionListener( ev -> {
-            final ImageIcon icon = new ImageIcon("./images/firegirl_small.png");
+            final ImageIcon icon = new ImageIcon("./images/watergirl_small.png");
             JOptionPane.showMessageDialog(null, "See you next time!", "Exit",JOptionPane.INFORMATION_MESSAGE,icon);
             System.exit(0);
         } );
